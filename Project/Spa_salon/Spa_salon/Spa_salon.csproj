@@ -94,11 +94,17 @@
     <Compile Include="Views\OrdersUserControl.xaml.cs">
       <DependentUpon>OrdersUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PersonalOfficeUserControl.xaml.cs">
+      <DependentUpon>PersonalOfficeUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SalonsUserControl.xaml.cs">
       <DependentUpon>SalonsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ServicesUserControl.xaml.cs">
       <DependentUpon>ServicesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsUserControl.xaml.cs">
+      <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkersUserControl.xaml.cs">
       <DependentUpon>WorkersUserControl.xaml</DependentUpon>
@@ -138,11 +144,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PersonalOfficeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SalonsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ServicesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

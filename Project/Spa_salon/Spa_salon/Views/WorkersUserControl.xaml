@@ -84,7 +84,7 @@
                         <Border Padding="5,0,5,5">
                             <StackPanel>
                                 <StackPanel Margin="5">
-                                    <Label Content="Номер паспорту:" />
+                                    <Label Content="Паспорт:" />
                                     <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">

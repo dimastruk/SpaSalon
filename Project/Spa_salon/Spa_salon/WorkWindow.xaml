@@ -9,6 +9,9 @@
         Title="Облік мережі spa-салонів" Height="700" Width="750">
     <Grid>
         <TabControl>
+            <TabItem Header="Особистий кабінет">
+                <views:PersonalOfficeUserControl/>
+            </TabItem>
             <TabItem Header="Салони">
                 <views:SalonsUserControl/>
             </TabItem>
@@ -26,6 +29,9 @@
             </TabItem>
             <TabItem Header="Список замовлень">
                 <views:AllOrdersUserControl/>
+            </TabItem>
+            <TabItem Header="Налаштування">
+                <views:SettingsUserControl/>
             </TabItem>
         </TabControl>
     </Grid>

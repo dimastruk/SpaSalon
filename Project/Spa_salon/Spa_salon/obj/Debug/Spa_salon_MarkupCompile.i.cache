@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\SpaSalon\Project\Spa_salon\Spa_salon\App.xaml
-10684948975
+12885665669
 
-18-1238203661
+20-1321778204
 19-1068621532
-AuthorizeWindow.xaml;PrintWindow.xaml;RegistrationWindow.xaml;Views\AllOrdersUserControl.xaml;Views\ClientsUserControl.xaml;Views\OrdersUserControl.xaml;Views\SalonsUserControl.xaml;Views\ServicesUserControl.xaml;Views\WorkersUserControl.xaml;WorkWindow.xaml;
+AuthorizeWindow.xaml;PrintWindow.xaml;RegistrationWindow.xaml;Views\AllOrdersUserControl.xaml;Views\ClientsUserControl.xaml;Views\OrdersUserControl.xaml;Views\PersonalOfficeUserControl.xaml;Views\SalonsUserControl.xaml;Views\ServicesUserControl.xaml;Views\SettingsUserControl.xaml;Views\WorkersUserControl.xaml;WorkWindow.xaml;
 
 True
 

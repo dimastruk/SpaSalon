@@ -96,3 +96,7 @@ E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\WorkWindow.baml
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Spa_salon.g.resources
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Spa_salon.Properties.Resources.resources
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Spa_salon.csproj.GenerateResource.Cache
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\PersonalOfficeUserControl.g.cs
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\PersonalOfficeUserControl.baml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\SettingsUserControl.g.cs
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\SettingsUserControl.baml
