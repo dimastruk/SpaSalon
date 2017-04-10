@@ -47,3 +47,6 @@ E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Pro
 E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Project\Spa_salon\Spa_salon\obj\Debug\PrintWindow.baml
 E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Project\Spa_salon\Spa_salon\obj\Debug\RegistrationWindow.g.cs
 E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Project\Spa_salon\Spa_salon\obj\Debug\RegistrationWindow.baml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\Spa_salon.exe.config
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Spa_salon.exe
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Spa_salon.pdb

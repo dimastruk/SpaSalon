@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Project\Spa_salon\Spa_salon\obj\Debug\
+E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\
 Spa_salon
 none
 false
 DEBUG;TRACE
-E:\ІКНІ\3 курс\2 семестр\Бази даних (курсова)\Project\Spa_salon\Spa_salon\App.xaml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\App.xaml
 10684948975
 
 18-1238203661
-19-1679024896
+19-1068621532
 AuthorizeWindow.xaml;PrintWindow.xaml;RegistrationWindow.xaml;Views\AllOrdersUserControl.xaml;Views\ClientsUserControl.xaml;Views\OrdersUserControl.xaml;Views\SalonsUserControl.xaml;Views\ServicesUserControl.xaml;Views\WorkersUserControl.xaml;WorkWindow.xaml;
 
-False
+True
 
