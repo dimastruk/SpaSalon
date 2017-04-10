@@ -1,13 +1,14 @@
-namespace Spa_salon.DAL.DbModel
+namespace Spa_salon.DAL
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using DbModel;
 
-    public partial class DataModel : DbContext
+    public partial class DataContext : DbContext
     {
-        public DataModel()
+        public DataContext()
             : base("name=DbConnect")
         {
         }

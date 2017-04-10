@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="DbModel\Calendar.cs" />
     <Compile Include="DbModel\Clients.cs" />
-    <Compile Include="DbModel\DataModel.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="DbModel\OrderDetails.cs" />
     <Compile Include="DbModel\Orders.cs" />
     <Compile Include="DbModel\Positions.cs" />
