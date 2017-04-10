@@ -5,90 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spa_salon"
         mc:Ignorable="d"
-        Title="Реєстрація" Height="320" Width="940">
+        Title="Реєстрація" Height="280" Width="250">
     <Grid>
         <StackPanel>
             <WrapPanel HorizontalAlignment="Center">
-                <Border Padding="10">
-                    <GroupBox Header="П.І.П.">
-                        <Border Padding="5,0,5,5">
-                            <StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Прізвище:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Ім'я:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="По-батькові:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </GroupBox>
-                </Border>
-                <Border Padding="10">
-                    <GroupBox Header="Персональні дані">
-                        <Border Padding="5,0,5,5">
-                            <StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Дата народження:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Адреса проживання:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Номер телефону:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </GroupBox>
-                </Border>
-                <Border Padding="10">
-                    <GroupBox Header="Документи">
-                        <Border Padding="5,0,5,5">
-                            <StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Номер паспорту:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Номер трудової книги:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Номер медичної картки:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </GroupBox>
-                </Border>
-                <Border Padding="10">
-                    <GroupBox Header="Інформація працівника">
-                        <Border Padding="5,0,5,5">
-                            <StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Ідентифікаційний номер:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Посада:" />
-                                    <ComboBox VerticalContentAlignment="Center" Height="25" Width="140"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Комісійні:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </GroupBox>
-                </Border>
                 <Border Padding="10">
                     <GroupBox Header="Авторизація">
                         <Border Padding="5,0,5,5">
@@ -106,7 +26,7 @@
                     </GroupBox>
                 </Border>
             </WrapPanel>
-            <Button Margin="0,0,15,0" Width="160" Height="40" HorizontalAlignment="Right" Content="Зареєструвати працівника" />
+            <Button Margin="0,20,0,0" Height="30" Content="Зареєструвати працівника" Width="170" />
         </StackPanel>
     </Grid>
 </Window>

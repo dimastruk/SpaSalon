@@ -7,14 +7,13 @@
         mc:Ignorable="d"
         Title="Авторизація" Height="373.062" Width="325">
     <Grid>
-        <Border Padding="0,70,0,0">
+        <Border Padding="0,80,0,0">
             <StackPanel Width="150">
                 <Label Content="Ім'я користувача:" />
                 <TextBox VerticalContentAlignment="Center" Height="25"></TextBox>
                 <Label Content="Пароль:" />
                 <PasswordBox VerticalContentAlignment="Center" Height="25"></PasswordBox>
                 <Button Height="35" Margin="0,25,0,0" Content="Увійти" Click="Button_Click" />
-                <Button Height="35" Margin="0,10,0,0" Content="Новий працівник" Click="Button_Click_1" />
             </StackPanel>
         </Border>
     </Grid>
