@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="Spa_salon.Views.WorkersUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Spa_salon.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="670" d:DesignWidth="750">
+    <Grid>
+        <StackPanel>
+            <Border Padding="0,10,0,10">
+                <GroupBox Header="Пошук" Margin="10,0,14,0">
+                    <Border Padding="5">
+                        <StackPanel>
+                            <WrapPanel>
+                                <TextBox FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
+                                <Button Margin="10,0,0,0" Width="100" Content="Знайти" />
+                                <Label Margin="20,5,5,0" Content="Фільтр:" />
+                                <ComboBox Width="148"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+                </GroupBox>
+            </Border>
+            <WrapPanel>
+                <Border Padding="10">
+                    <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="475" Height="250" Header="Список працівників">
+                        <Border Padding="5">
+                            <DataGrid></DataGrid>
+                        </Border>
+                    </GroupBox>
+                </Border>
+                <Border Padding="10">
+                    <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="250" Header="Час роботи">
+                        <Border Padding="5">
+                            <DataGrid></DataGrid>
+                        </Border>
+                    </GroupBox>
+                </Border>
+            </WrapPanel>
+            <WrapPanel>
+                <Border Padding="10">
+                    <GroupBox Header="П.І.П.">
+                        <Border Padding="5,0,5,5">
+                            <StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Прізвище:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Ім'я:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="По-батькові:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                </Border>
+                <Border Padding="10">
+                    <GroupBox Header="Персональні дані">
+                        <Border Padding="5,0,5,5">
+                            <StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Дата народження:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Адреса проживання:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Номер телефону:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                </Border>
+                <Border Padding="10">
+                    <GroupBox Header="Документи">
+                        <Border Padding="5,0,5,5">
+                            <StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Номер паспорту:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Номер трудової книги:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Номер медичної картки:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                </Border>
+                <Border Padding="10">
+                    <GroupBox Header="Інформація працівника">
+                        <Border Padding="5,0,5,5">
+                            <StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Ідентифікаційний номер:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Посада:" />
+                                    <ComboBox VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                </StackPanel>
+                                <StackPanel Margin="5">
+                                    <Label Content="Комісійні:" />
+                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </GroupBox>
+                </Border>
+            </WrapPanel>
+            <WrapPanel Margin="0,0,10,0" HorizontalAlignment="Right">
+                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Показати дохід" Click="Button_Click_1"/>
+                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Змінити"/>
+                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Додати" Click="Button_Click_2"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

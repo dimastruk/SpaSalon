@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Spa_salon.Views.ClientsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Spa_salon.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="700">
+    <Grid>
+        <Border Padding="0,10,0,10">
+            <StackPanel>
+            <GroupBox Header="Пошук" Margin="10,0,10,0">
+                    <Border Padding="5">
+                        <StackPanel>
+                            <WrapPanel>
+                                <TextBox FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
+                                <Button Margin="10,0,0,0" Width="100" Content="Знайти" />
+                                <Label Margin="20,5,5,0" Content="Фільтр:" />
+                                <ComboBox Width="148"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+                </GroupBox>
+        
+            <Border VerticalAlignment="Top" Height="350" Padding="11">
+                <DataGrid></DataGrid>
+            </Border>
+            <Border Padding="10,5,10,0">
+                <GroupBox Header="Редагування" Height="180">
+                    <Border Padding="0,10,0,0">
+                            <WrapPanel>
+                                <StackPanel Width="450">
+                                    <StackPanel>
+                                        <WrapPanel Margin="10,5,0,5">
+                                            <Label Width="130" Margin="0,5,0,0" Content="Прізвище:" />
+                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                        </WrapPanel>
+                                        <WrapPanel Margin="10,5,0,5">
+                                            <Label Width="130" Margin="0,5,0,0" Content="Ім'я:" />
+                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                        </WrapPanel>
+                                        <WrapPanel Margin="10,5,0,5">
+                                            <Label Width="130" Margin="0,5,0,0" Content="Номер телефону:" />
+                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                                <GroupBox Margin="20,-5,0,15" Header="Операції" Width="210">
+                                    <Border Padding="10,10,10,5">
+                                        <StackPanel>
+                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Змінити"/>
+                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Додати"/>
+                                        </StackPanel>
+                                    </Border>
+                                </GroupBox>
+                            </WrapPanel>
+                        </Border>
+                </GroupBox>
+            </Border>
+        </StackPanel>
+      </Border>
+    </Grid>
+</UserControl>
