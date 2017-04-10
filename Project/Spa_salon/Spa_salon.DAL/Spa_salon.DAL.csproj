@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbModel\Calendar.cs" />
+    <Compile Include="DbModel\Clients.cs" />
+    <Compile Include="DbModel\DataModel.cs" />
+    <Compile Include="DbModel\OrderDetails.cs" />
+    <Compile Include="DbModel\Orders.cs" />
+    <Compile Include="DbModel\Positions.cs" />
+    <Compile Include="DbModel\Salons.cs" />
+    <Compile Include="DbModel\Services.cs" />
+    <Compile Include="DbModel\Specialities.cs" />
+    <Compile Include="DbModel\Workers.cs" />
+    <Compile Include="DbModel\Workers_schedule.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

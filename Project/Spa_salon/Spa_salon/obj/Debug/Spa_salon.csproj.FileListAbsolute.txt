@@ -100,3 +100,9 @@ E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\PersonalOfficeUserContro
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\PersonalOfficeUserControl.baml
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\SettingsUserControl.g.cs
 E:\SpaSalon\Project\Spa_salon\Spa_salon\obj\Debug\Views\SettingsUserControl.baml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.SqlServer.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.xml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.SqlServer.xml
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\ru\EntityFramework.resources.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

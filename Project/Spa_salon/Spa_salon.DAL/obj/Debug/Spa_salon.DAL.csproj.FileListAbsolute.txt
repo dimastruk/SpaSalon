@@ -1,0 +1,12 @@
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\Spa_salon.DAL.dll.config
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\Spa_salon.DAL.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\Spa_salon.DAL.pdb
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\EntityFramework.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\EntityFramework.xml
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\ru\EntityFramework.resources.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\obj\Debug\Spa_salon.DAL.csprojResolveAssemblyReference.cache
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\obj\Debug\Spa_salon.DAL.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\obj\Debug\Spa_salon.DAL.pdb
+E:\SpaSalon\Project\Spa_salon\Spa_salon.DAL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
