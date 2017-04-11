@@ -106,3 +106,7 @@ E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.xml
 E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\EntityFramework.SqlServer.xml
 E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\ru\EntityFramework.resources.dll
 E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\Spa_salon.Common.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\Spa_salon.DAL.dll
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\Spa_salon.Common.pdb
+E:\SpaSalon\Project\Spa_salon\Spa_salon\bin\Debug\Spa_salon.DAL.pdb

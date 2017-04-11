@@ -26,7 +26,7 @@ namespace Spa_salon.Common.Services
         {
             get
             {
-                _initializeTask.Wait();
+                //_initializeTask.Wait();
                 return _context;
             }
         }

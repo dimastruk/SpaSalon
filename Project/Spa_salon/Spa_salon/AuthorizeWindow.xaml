@@ -10,10 +10,10 @@
         <Border Padding="0,80,0,0">
             <StackPanel Width="150">
                 <Label Content="Ім'я користувача:" />
-                <TextBox VerticalContentAlignment="Center" Height="25"></TextBox>
+                <TextBox x:Name="UserName"  VerticalContentAlignment="Center" Height="25" Text="{Binding Path=Name}"></TextBox>
                 <Label Content="Пароль:" />
-                <PasswordBox VerticalContentAlignment="Center" Height="25"></PasswordBox>
-                <Button Height="35" Margin="0,25,0,0" Content="Увійти" Click="Button_Click" />
+                <PasswordBox x:Name="Password" VerticalContentAlignment="Center" Height="25"></PasswordBox>
+                <Button Height="35" Margin="0,25,0,0" Content="Увійти" Command="{Binding Path=LoginCommand}" CommandParameter="{Binding ElementName=Password}"/>
             </StackPanel>
         </Border>
     </Grid>

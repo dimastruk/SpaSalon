@@ -14,6 +14,7 @@ namespace Spa_salon.Common.Services
     {
         IWorker GetWorker(Workers worker);
         Workers GetWorker(IWorker worker);
+        IWorker Login(string loginName, string password);
     }
 
     public class WorkersService : DbDependentService, IWorkersService
@@ -47,6 +48,21 @@ namespace Spa_salon.Common.Services
             return new Worker(worker.worker_id, worker.last_name, worker.first_name, worker.middle_name,
                 worker.date_of_birth, worker.passport_number, worker.workbook_number, worker.medicalbook_number,
                 worker.ID_number, worker.address, position, salon, worker.login_name);
+        }
+
+        public IWorker Login(string loginName, string password)
+        {
+            var workerdata = DbService.Context.Workers.FirstOrDefault(w => w.login_name.Equals(loginName));
+            if (workerdata != null)
+            {
+                var decryptedPassword = Encoding.UTF8.GetString(workerdata.password_string);
+                if (string.CompareOrdinal(decryptedPassword, password) == 0)
+                {
+                    return GetWorker(workerdata);
+                }
+                throw new InvalidOperationException("Неправильний пароль для цього користувача!");
+            }
+            throw new InvalidOperationException("Даний користувач не існує!");
         }
     }
 }
