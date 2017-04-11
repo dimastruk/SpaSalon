@@ -1,4 +1,5 @@
-﻿using Spa_salon.Common.Services;
+﻿using Spa_salon.Common.Enumerations;
+using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,7 @@ namespace Spa_salon.Common.Models
         IPosition Position { get; }
         ISalon Salon { get; }
         string LoginName { get; }
+        WorkerStatus Status { get; }
         ObservableCollection<ISpeciality> Specialities { get; }
     }
 
@@ -47,6 +49,19 @@ namespace Spa_salon.Common.Models
             Position = position;
             Salon = salon;
             LoginName = loginName;
+
+            if(String.Equals(Position.PositionName, EnumHelper.GetEnumDescription(WorkerStatus.Owner)))
+            {
+                Status = WorkerStatus.Owner;
+            }
+            else if (String.Equals(Position.PositionName, EnumHelper.GetEnumDescription(WorkerStatus.Administrator)))
+            {
+                Status = WorkerStatus.Administrator;
+            }
+            else
+            {
+                Status = WorkerStatus.Worker;
+            }
 
             var specialitiesService = new SpecialitiesService();
             Specialities = new ObservableCollection<ISpeciality>(specialitiesService.GetSpecialities(WorkerId));
@@ -122,6 +137,11 @@ namespace Spa_salon.Common.Models
         }
 
         public ObservableCollection<ISpeciality> Specialities
+        {
+            get;
+        }
+
+        public WorkerStatus Status
         {
             get;
         }

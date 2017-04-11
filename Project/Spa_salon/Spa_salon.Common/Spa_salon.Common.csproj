@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\EnumHelper.cs" />
+    <Compile Include="Enumerations\WorkerStatus.cs" />
     <Compile Include="Models\IPosition.cs" />
     <Compile Include="Models\ISalon.cs" />
     <Compile Include="Models\IService.cs" />

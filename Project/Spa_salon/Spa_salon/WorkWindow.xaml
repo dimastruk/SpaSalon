@@ -4,33 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spa_salon"
+        xmlns:enum="clr-namespace:Spa_salon.Common.Enumerations;assembly=Spa_salon.Common"
         xmlns:views="clr-namespace:Spa_salon.Views"
+        xmlns:converters="clr-namespace:Spa_salon.Converters"
         mc:Ignorable="d"
         Title="Облік мережі spa-салонів" Height="700" Width="750">
+
+    <Window.Resources>
+        <converters:WorkerStatusToVisibilityConverter x:Key="WorkerStatusToVisibilityConverter" />
+    </Window.Resources>
+    
     <Grid>
         <TabControl>
-            <TabItem Header="Особистий кабінет">
+            <TabItem Header="Особистий кабінет" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">
                 <views:PersonalOfficeUserControl/>
             </TabItem>
-            <TabItem Header="Салони">
+            <TabItem Header="Салони" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Owner}}">
                 <views:SalonsUserControl/>
             </TabItem>
-            <TabItem Header="Посади та послуги">
+            <TabItem Header="Посади та послуги" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Owner}}">
                 <views:ServicesUserControl/>
             </TabItem>
-            <TabItem Header="Працівники">
+            <TabItem Header="Працівники" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Administrator}}">
                 <views:WorkersUserControl/>
             </TabItem>
-            <TabItem Header="Клієнти">
+            <TabItem Header="Клієнти" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Administrator}}">
                 <views:ClientsUserControl/>
             </TabItem>
-            <TabItem Header="Нове замовлення">
+            <TabItem Header="Нове замовлення" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">
                 <views:OrdersUserControl/>
             </TabItem>
-            <TabItem Header="Список замовлень">
+            <TabItem Header="Список замовлень" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">
                 <views:AllOrdersUserControl/>
             </TabItem>
-            <TabItem Header="Налаштування">
+            <TabItem Header="Налаштування" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">
                 <views:SettingsUserControl/>
             </TabItem>
         </TabControl>

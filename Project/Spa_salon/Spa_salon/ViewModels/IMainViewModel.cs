@@ -1,4 +1,5 @@
-﻿using Spa_salon.Common.Models;
+﻿using Spa_salon.Common.Enumerations;
+using Spa_salon.Common.Models;
 using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace Spa_salon.ViewModels
         }
 
         public ISpeciality Speciality
+        {
+            get;
+        }
+
+        public WorkerStatus Status
         {
             get;
         }

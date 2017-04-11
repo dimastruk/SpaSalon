@@ -17,7 +17,7 @@ namespace Spa_salon.Common.Models
         public Position(int positionId, string positionName)
         {
             PositionId = positionId;
-            PositionName = positionName;
+            PositionName = positionName.Replace(" ", string.Empty);
         }
 
         public int PositionId
