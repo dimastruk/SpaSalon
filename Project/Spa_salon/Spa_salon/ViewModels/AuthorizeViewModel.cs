@@ -90,7 +90,7 @@ namespace Spa_salon.ViewModels
         internal void Authorize(IWorker worker)
         {
             var workWindow = new WorkWindow();
-            workWindow.DataContext = this;
+            workWindow.DataContext = new MainViewModel(worker);
             SetMainWindow(workWindow);
         }
         internal void SetMainWindow(Window window)

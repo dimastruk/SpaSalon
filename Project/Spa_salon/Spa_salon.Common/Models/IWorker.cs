@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Spa_salon.Common.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,21 +14,23 @@ namespace Spa_salon.Common.Models
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
-        DateTime DateOfBirth { get; set; }
+        string DateOfBirth { get; set; }
         string PassportNumber { get; set; }
         int WorkbookNumber { get; set; }
         int MedicalbookNumber { get; set; }
         long IdNumber { get; set; }
+        long PhoneNumber { get; set; }
         string Address { get; set; }
         IPosition Position { get; }
         ISalon Salon { get; }
         string LoginName { get; }
+        ObservableCollection<ISpeciality> Specialities { get; }
     }
 
     public class Worker : IWorker
     {
-        public Worker(int workerId, string lastName, string firstName, string middleName, DateTime dateOfBirth, 
-            string passportNumber, int workbookNumber, int medicalbookNumber, long idNumber, 
+        public Worker(int workerId, string lastName, string firstName, string middleName, string dateOfBirth, 
+            string passportNumber, int workbookNumber, int medicalbookNumber, long idNumber, long phoneNumber,
             string address, IPosition position, ISalon salon, string loginName)
         {
             WorkerId = workerId;
@@ -38,10 +42,14 @@ namespace Spa_salon.Common.Models
             WorkbookNumber = workbookNumber;
             MedicalbookNumber = medicalbookNumber;
             IdNumber = idNumber;
+            PhoneNumber = phoneNumber;
             Address = address;
             Position = position;
             Salon = salon;
             LoginName = loginName;
+
+            var specialitiesService = new SpecialitiesService();
+            Specialities = new ObservableCollection<ISpeciality>(specialitiesService.GetSpecialities(WorkerId));
         }
 
         public string Address
@@ -50,7 +58,7 @@ namespace Spa_salon.Common.Models
             set;
         }
 
-        public DateTime DateOfBirth
+        public string DateOfBirth
         {
             get;
             set;
@@ -97,12 +105,23 @@ namespace Spa_salon.Common.Models
             set;
         }
 
+        public long PhoneNumber
+        {
+            get;
+            set;
+        }
+
         public IPosition Position
         {
             get;
         }
 
         public ISalon Salon
+        {
+            get;
+        }
+
+        public ObservableCollection<ISpeciality> Specialities
         {
             get;
         }
