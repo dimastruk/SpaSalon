@@ -8,7 +8,6 @@ namespace Spa_salon.DAL.DbModel
 
     public partial class Workers
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Workers()
         {
             Specialities = new HashSet<Specialities>();
@@ -63,10 +62,8 @@ namespace Spa_salon.DAL.DbModel
 
         public virtual Salons Salons { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Specialities> Specialities { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Workers_schedule> Workers_schedule { get; set; }
     }
 }

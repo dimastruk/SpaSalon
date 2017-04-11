@@ -9,7 +9,6 @@ namespace Spa_salon.DAL.DbModel
     [Table("Calendar")]
     public partial class Calendar
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Calendar()
         {
             Workers_schedule = new HashSet<Workers_schedule>();
@@ -39,7 +38,6 @@ namespace Spa_salon.DAL.DbModel
 
         public byte Quarter { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Workers_schedule> Workers_schedule { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace Spa_salon.DAL.DbModel
 
     public partial class Specialities
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Specialities()
         {
             OrderDetails = new HashSet<OrderDetails>();
@@ -23,7 +22,6 @@ namespace Spa_salon.DAL.DbModel
 
         public int commisions { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
 
         public virtual Services Services { get; set; }

@@ -8,7 +8,6 @@ namespace Spa_salon.DAL.DbModel
 
     public partial class Services
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Services()
         {
             Specialities = new HashSet<Specialities>();
@@ -23,7 +22,6 @@ namespace Spa_salon.DAL.DbModel
 
         public int service_price { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Specialities> Specialities { get; set; }
     }
 }

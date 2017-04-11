@@ -49,7 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IPosition.cs" />
+    <Compile Include="Models\ISalon.cs" />
+    <Compile Include="Models\IWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DbDependentService.cs" />
     <Compile Include="Services\IDbService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +66,7 @@
       <Name>Spa_salon.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

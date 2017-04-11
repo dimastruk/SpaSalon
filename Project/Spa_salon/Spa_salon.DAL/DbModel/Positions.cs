@@ -8,7 +8,6 @@ namespace Spa_salon.DAL.DbModel
 
     public partial class Positions
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Positions()
         {
             Workers = new HashSet<Workers>();
@@ -21,7 +20,6 @@ namespace Spa_salon.DAL.DbModel
         [StringLength(20)]
         public string position_name { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Workers> Workers { get; set; }
     }
 }
