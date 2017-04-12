@@ -1,0 +1,149 @@
+﻿using IssueTracker.Commands;
+using Spa_salon.Common.Enumerations;
+using Spa_salon.Common.Models;
+using Spa_salon.Common.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+
+namespace Spa_salon.ViewModels
+{
+    public interface IOrderViewModel : INotifyPropertyChanged
+    {
+        #region Properties
+        OrderFilters OrderFilter { get; set; }
+        string SearchString { get; set; }
+        #endregion
+
+        #region Collections
+        ObservableCollection<IOrder> WorkerOrders { get; set; }
+        ObservableCollection<IOrder> AllOrders { get; }
+        ObservableCollection<IOrder> ActiveOrders { get; }
+        #endregion
+
+        #region Commands
+        ICommand SearchOrdersCommand { get; }
+        #endregion
+    }
+
+    public class OrderViewModel : ViewModelBase, IOrderViewModel
+    {
+        #region Constructors
+        public OrderViewModel(WorkerViewModel worker)
+        {
+            var orderService = new OrderService();
+            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(worker.Specialities));
+            AllOrders = WorkerOrders;
+            ActiveOrders = new ObservableCollection<IOrder>(WorkerOrders.Where(x => x.IsActual == true).ToList());
+
+            OrderFilter = OrderFilters.LastName;
+        }
+        #endregion
+
+        #region Properties
+        public ObservableCollection<IOrder> ActiveOrders
+        {
+            get;
+        }
+
+        private OrderFilters _orderFilter;
+        public OrderFilters OrderFilter
+        {
+            get
+            {
+                return _orderFilter;
+            }
+
+            set
+            {
+                _orderFilter = value;
+                OnPropertyChanged("OrderFilter");
+            }
+        }
+
+        private ObservableCollection<IOrder> _workerOrders;
+        public ObservableCollection<IOrder> WorkerOrders
+        {
+            get
+            {
+                return _workerOrders;
+            }
+            set
+            {
+                _workerOrders = value;
+                OnPropertyChanged("WorkerOrders");
+            }
+        }
+
+        private string _searchString;
+        public string SearchString
+        {
+            get
+            {
+                return _searchString;
+            }
+
+            set
+            {
+                _searchString = value;
+                OnPropertyChanged("SearchString");
+            }
+        }
+
+        public ObservableCollection<IOrder> AllOrders
+        {
+            get;
+        }
+        #endregion
+
+        #region Commands
+        private ICommand _searchOrderCommand;
+        public ICommand SearchOrdersCommand
+        {
+            get
+            {
+                if (_searchOrderCommand == null)
+                {
+                    _searchOrderCommand = new DelegateCommand(SearchOrdersCommand_Execute, SearchOrdersCommand_CanExecute);
+                }
+
+                return _searchOrderCommand;
+            }
+        }
+
+        private bool SearchOrdersCommand_CanExecute(object o)
+        {
+            if(string.IsNullOrEmpty(SearchString))
+            {
+                WorkerOrders = AllOrders;
+                return false;
+            }
+            return true;
+        }
+
+        private void SearchOrdersCommand_Execute(object o)
+        {
+            try
+            {
+                switch(OrderFilter)
+                {
+                    case OrderFilters.LastName:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.Client.LastName == SearchString).ToList());
+                        break;
+                    // Finish all filters
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!");
+            }
+        }
+        #endregion
+    }
+}

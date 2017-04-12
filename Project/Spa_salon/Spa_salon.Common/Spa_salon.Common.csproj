@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\EnumHelper.cs" />
+    <Compile Include="Enumerations\OrderFilters.cs" />
     <Compile Include="Enumerations\WorkerStatus.cs" />
     <Compile Include="Models\IClient.cs" />
     <Compile Include="Models\IOrder.cs" />

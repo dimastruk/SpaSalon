@@ -14,6 +14,7 @@ namespace Spa_salon.ViewModels
 
     public interface IWorkerViewModel : INotifyPropertyChanged
     {
+        #region Properties
         int WorkerId { get; }
         string LastName { get; set; }
         string FirstName { get; set; }
@@ -29,8 +30,12 @@ namespace Spa_salon.ViewModels
         ISalon Salon { get; }
         string LoginName { get; }
         WorkerStatus Status { get; }
+        IOrderViewModel Order { get; }
+        #endregion Properties
+
+        #region Collections
         ObservableCollection<ISpeciality> Specialities { get; }
-        ObservableCollection<IOrder> WorkerOrders { get; }
+        #endregion
     }
 
     public class WorkerViewModel : ViewModelBase, IWorkerViewModel
@@ -55,8 +60,7 @@ namespace Spa_salon.ViewModels
             Status = worker.Status;
             Specialities = new ObservableCollection<ISpeciality>(worker.Specialities);
 
-            var orderService = new OrderService();
-            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(Specialities));
+            Order = new OrderViewModel(this);
         }
         #endregion
 
@@ -240,7 +244,7 @@ namespace Spa_salon.ViewModels
             get;
         }
 
-        public ObservableCollection<IOrder> WorkerOrders
+        public IOrderViewModel Order
         {
             get;
         }

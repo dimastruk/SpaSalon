@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Spa_salon.Views"
              xmlns:converters="clr-namespace:Spa_salon.Converters"
+             xmlns:enumerations="clr-namespace:Spa_salon.Common.Enumerations;assembly=Spa_salon.Common"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
 
@@ -17,6 +19,13 @@
                  Value="Center" />
         </Style>
         <converters:IsActualToWordConverter x:Key="IsActualToWordConverter"></converters:IsActualToWordConverter>
+        <converters:OrderFiltersToStringConverter x:Key="OrderFiltersToStringConverter"></converters:OrderFiltersToStringConverter>
+        <ObjectDataProvider x:Key="OrderFilters" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enumerations:OrderFilters"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
 
     <Grid>
@@ -26,17 +35,23 @@
                     <Border Padding="5">
                         <StackPanel>
                             <WrapPanel>
-                                <TextBox FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
-                                <Button Margin="10,0,0,0" Width="100" Content="Знайти" />
+                                <TextBox Text="{Binding Worker.Order.SearchString, UpdateSourceTrigger=PropertyChanged}"  FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
+                                <Button Margin="10,0,0,0" Width="100" Content="Знайти" Command="{Binding Worker.Order.SearchOrdersCommand}"/>
                                 <Label Margin="20,5,5,0" Content="Фільтр:" />
-                                <ComboBox Width="148"/>
+                                <ComboBox FontSize="15" VerticalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource OrderFilters}}" SelectedItem="{Binding Worker.Order.OrderFilter}" Width="148">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource OrderFiltersToStringConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </WrapPanel>
                         </StackPanel>
                     </Border>
                 </GroupBox>
             </Border>
             <Border VerticalAlignment="Top" Height="545" Padding="10">
-                <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Worker.WorkerOrders}" IsReadOnly="True">
+                <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Worker.Order.WorkerOrders}" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Client.LastName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Прізвище" />
                         <DataGridTextColumn Binding="{Binding Client.FirstName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ім'я" />
