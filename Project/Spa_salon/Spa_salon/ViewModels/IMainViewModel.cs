@@ -23,16 +23,6 @@ namespace Spa_salon.ViewModels
             Worker = new WorkerViewModel(worker);
         }
 
-        public ISpeciality Speciality
-        {
-            get;
-        }
-
-        public WorkerStatus Status
-        {
-            get;
-        }
-
         public IWorkerViewModel Worker
         {
             get;

@@ -45,7 +45,7 @@
                         <StackPanel>
                             <StackPanel Margin="5">
                                 <Label Content="Дата народження:" />
-                                <TextBlock FontSize="14" HorizontalAlignment="Left" Padding="5,2,0,0" Text="{Binding Worker.DateOfBirth}" Height="25" Width="100"/>
+                                <TextBlock FontSize="14" HorizontalAlignment="Left" Padding="5,2,0,0" Text="{Binding Worker.DateOfBirth, StringFormat=dd.MM.yyyy}" Height="25" Width="100"/>
                             </StackPanel>
                             <StackPanel Margin="5">
                                 <Label Content="Адреса проживання:" />

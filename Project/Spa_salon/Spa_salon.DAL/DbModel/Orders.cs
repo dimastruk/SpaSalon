@@ -25,7 +25,7 @@ namespace Spa_salon.DAL.DbModel
 
         public bool isActual { get; set; }
 
-        public int? total_price { get; set; }
+        public int total_price { get; set; }
 
         public virtual Clients Clients { get; set; }
 

@@ -46,7 +46,7 @@ namespace Spa_salon.Common.Services
             var salon = new Salon(worker.Salons.salon_id, worker.Salons.address);
 
             return new Worker(worker.worker_id, worker.last_name, worker.first_name, worker.middle_name,
-                worker.date_of_birth.ToShortDateString(), worker.passport_number, worker.workbook_number, worker.medicalbook_number,
+                worker.date_of_birth, worker.passport_number, worker.workbook_number, worker.medicalbook_number,
                 worker.ID_number, worker.phone_number, worker.address, position, salon, worker.login_name);
         }
 

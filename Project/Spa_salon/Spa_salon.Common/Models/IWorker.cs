@@ -15,7 +15,7 @@ namespace Spa_salon.Common.Models
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
-        string DateOfBirth { get; set; }
+        DateTime DateOfBirth { get; set; }
         string PassportNumber { get; set; }
         int WorkbookNumber { get; set; }
         int MedicalbookNumber { get; set; }
@@ -31,7 +31,7 @@ namespace Spa_salon.Common.Models
 
     public class Worker : IWorker
     {
-        public Worker(int workerId, string lastName, string firstName, string middleName, string dateOfBirth, 
+        public Worker(int workerId, string lastName, string firstName, string middleName, DateTime dateOfBirth, 
             string passportNumber, int workbookNumber, int medicalbookNumber, long idNumber, long phoneNumber,
             string address, IPosition position, ISalon salon, string loginName)
         {
@@ -73,7 +73,7 @@ namespace Spa_salon.Common.Models
             set;
         }
 
-        public string DateOfBirth
+        public DateTime DateOfBirth
         {
             get;
             set;

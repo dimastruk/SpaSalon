@@ -4,8 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Spa_salon.Views"
+             xmlns:converters="clr-namespace:Spa_salon.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+        <converters:IsActualToWordConverter x:Key="IsActualToWordConverter"></converters:IsActualToWordConverter>
+    </UserControl.Resources>
+
     <Grid>
         <StackPanel>
             <Border Padding="0,10,0,10">
@@ -23,7 +36,27 @@
                 </GroupBox>
             </Border>
             <Border VerticalAlignment="Top" Height="545" Padding="10">
-                <DataGrid></DataGrid>
+                <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding Worker.WorkerOrders}" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Client.LastName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Прізвище" />
+                        <DataGridTextColumn Binding="{Binding Client.FirstName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ім'я" />
+                        <DataGridTextColumn Binding="{Binding Client.PhoneNumber}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Номер телефону" />
+                        <DataGridTextColumn Binding="{Binding OrderDate, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Дата" />
+                        <DataGridTextColumn Binding="{Binding OrderTime}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Час" />
+                        <DataGridTextColumn Binding="{Binding IsActual, Converter={StaticResource IsActualToWordConverter}}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Актуальність" />
+                        <DataGridTextColumn Binding="{Binding TotalPrice}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Сума (UAH)" />
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <DataGrid AutoGenerateColumns="false" ItemsSource="{Binding Path=OrderDetails}" IsReadOnly="True" Margin="10">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path=Speciality.Service.ServiceName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Послуга" />
+                                    <DataGridTextColumn Binding="{Binding Path=Speciality.Service.ServicePrice}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ціна" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
             </Border>
         </StackPanel>
     </Grid>

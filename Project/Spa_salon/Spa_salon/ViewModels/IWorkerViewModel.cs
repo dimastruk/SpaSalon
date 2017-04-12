@@ -1,5 +1,6 @@
 ﻿using Spa_salon.Common.Enumerations;
 using Spa_salon.Common.Models;
+using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +18,7 @@ namespace Spa_salon.ViewModels
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
-        string DateOfBirth { get; set; }
+        DateTime DateOfBirth { get; set; }
         string PassportNumber { get; set; }
         int WorkbookNumber { get; set; }
         int MedicalbookNumber { get; set; }
@@ -29,6 +30,7 @@ namespace Spa_salon.ViewModels
         string LoginName { get; }
         WorkerStatus Status { get; }
         ObservableCollection<ISpeciality> Specialities { get; }
+        ObservableCollection<IOrder> WorkerOrders { get; }
     }
 
     public class WorkerViewModel : ViewModelBase, IWorkerViewModel
@@ -52,6 +54,9 @@ namespace Spa_salon.ViewModels
             LoginName = worker.LoginName;
             Status = worker.Status;
             Specialities = new ObservableCollection<ISpeciality>(worker.Specialities);
+
+            var orderService = new OrderService();
+            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(Specialities));
         }
         #endregion
 
@@ -71,8 +76,8 @@ namespace Spa_salon.ViewModels
             }
         }
 
-        private string _dateOfBirth;
-        public string DateOfBirth
+        private DateTime _dateOfBirth;
+        public DateTime DateOfBirth
         {
             get
             {
@@ -231,6 +236,11 @@ namespace Spa_salon.ViewModels
             }
         }
         public int WorkerId
+        {
+            get;
+        }
+
+        public ObservableCollection<IOrder> WorkerOrders
         {
             get;
         }
