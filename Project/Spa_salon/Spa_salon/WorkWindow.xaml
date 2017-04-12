@@ -31,7 +31,7 @@
             <TabItem Header="Клієнти" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Administrator}}">
                 <views:ClientsUserControl/>
             </TabItem>
-            <TabItem Header="Нове замовлення" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">
+            <TabItem Header="Нове замовлення" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Administrator}}">
                 <views:OrdersUserControl/>
             </TabItem>
             <TabItem Header="Список замовлень" Visibility="{Binding Worker.Status, Converter={StaticResource WorkerStatusToVisibilityConverter}, ConverterParameter={x:Static enum:WorkerStatus.Worker}}">

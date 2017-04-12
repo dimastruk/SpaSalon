@@ -3,6 +3,7 @@ using Spa_salon.Common.Models;
 using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,14 @@ namespace Spa_salon.ViewModels
 {
     public interface IMainViewModel : INotifyPropertyChanged
     {
-        IWorker Worker { get; }
+        IWorkerViewModel Worker { get; }
     }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
         public MainViewModel(IWorker worker)
         {
-            Worker = worker;
+            Worker = new WorkerViewModel(worker);
         }
 
         public ISpeciality Speciality
@@ -32,7 +33,7 @@ namespace Spa_salon.ViewModels
             get;
         }
 
-        public IWorker Worker
+        public IWorkerViewModel Worker
         {
             get;
         }

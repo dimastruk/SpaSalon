@@ -26,7 +26,7 @@ namespace Spa_salon.Common.Models
         ISalon Salon { get; }
         string LoginName { get; }
         WorkerStatus Status { get; }
-        ObservableCollection<ISpeciality> Specialities { get; }
+        ICollection<ISpeciality> Specialities { get; }
     }
 
     public class Worker : IWorker
@@ -64,7 +64,7 @@ namespace Spa_salon.Common.Models
             }
 
             var specialitiesService = new SpecialitiesService();
-            Specialities = new ObservableCollection<ISpeciality>(specialitiesService.GetSpecialities(WorkerId));
+            Specialities = specialitiesService.GetSpecialities(WorkerId);
         }
 
         public string Address
@@ -136,7 +136,7 @@ namespace Spa_salon.Common.Models
             get;
         }
 
-        public ObservableCollection<ISpeciality> Specialities
+        public ICollection<ISpeciality> Specialities
         {
             get;
         }
