@@ -136,7 +136,36 @@ namespace Spa_salon.ViewModels
                     case OrderFilters.LastName:
                         WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.Client.LastName == SearchString).ToList());
                         break;
-                    // Finish all filters
+                    case OrderFilters.FirstName:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.Client.FirstName == SearchString).ToList());
+                        break;
+                    case OrderFilters.PhoneNumber:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.Client.PhoneNumber.ToString() == SearchString).ToList());
+                        break;
+                    case OrderFilters.Date:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.OrderDate.ToString("dd.MM.yyyy") == SearchString).ToList());
+                        break;
+                    case OrderFilters.Time:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.OrderTime.ToString("hh\\:mm") == SearchString).ToList());
+                        break;
+                    case OrderFilters.Actuality:
+
+                        if (string.Equals(SearchString, "Виконано"))
+                        {
+                            WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.IsActual == false).ToList());
+                        }
+                        else if(string.Equals(SearchString, "Не виконано"))
+                        {
+                            WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.IsActual == true).ToList());
+                        }
+                        else
+                        {
+                            WorkerOrders = null;
+                        }
+                        break;
+                    case OrderFilters.TotalPrice:
+                        WorkerOrders = new ObservableCollection<IOrder>(AllOrders.Where(x => x.TotalPrice.ToString() == SearchString).ToList());
+                        break;
                 }
             }
             catch (Exception ex)

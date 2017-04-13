@@ -57,7 +57,7 @@
                         <DataGridTextColumn Binding="{Binding Client.FirstName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ім'я" />
                         <DataGridTextColumn Binding="{Binding Client.PhoneNumber}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Номер телефону" />
                         <DataGridTextColumn Binding="{Binding OrderDate, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Дата" />
-                        <DataGridTextColumn Binding="{Binding OrderTime}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Час" />
+                        <DataGridTextColumn Binding="{Binding OrderTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Час" />
                         <DataGridTextColumn Binding="{Binding IsActual, Converter={StaticResource IsActualToWordConverter}}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Актуальність" />
                         <DataGridTextColumn Binding="{Binding TotalPrice}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Сума (UAH)" />
                     </DataGrid.Columns>
