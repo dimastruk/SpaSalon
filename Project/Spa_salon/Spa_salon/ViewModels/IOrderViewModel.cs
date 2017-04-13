@@ -35,10 +35,10 @@ namespace Spa_salon.ViewModels
     public class OrderViewModel : ViewModelBase, IOrderViewModel
     {
         #region Constructors
-        public OrderViewModel(UserViewModel worker)
+        public OrderViewModel(UserViewModel user)
         {
             var orderService = new OrderService();
-            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(worker.Specialities));
+            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(user.Specialities));
             AllOrders = WorkerOrders;
             ActiveOrders = new ObservableCollection<IOrder>(WorkerOrders.Where(x => x.IsActual == true).ToList());
 

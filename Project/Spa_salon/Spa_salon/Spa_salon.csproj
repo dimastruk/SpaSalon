@@ -102,6 +102,7 @@
     <Compile Include="ViewModels\AuthorizeViewModel.cs" />
     <Compile Include="ViewModels\IOrderViewModel.cs" />
     <Compile Include="ViewModels\IUserViewModel.cs" />
+    <Compile Include="ViewModels\IWorkerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AllOrdersUserControl.xaml.cs">
       <DependentUpon>AllOrdersUserControl.xaml</DependentUpon>

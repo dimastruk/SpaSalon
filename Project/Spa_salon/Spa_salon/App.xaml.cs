@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spa_salon.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace Spa_salon
     /// </summary>
     public partial class App : Application
     {
+        static public IWorker CurrentUser { get; set; }
     }
 }

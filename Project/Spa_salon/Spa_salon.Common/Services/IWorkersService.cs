@@ -15,10 +15,29 @@ namespace Spa_salon.Common.Services
         IWorker GetWorker(Workers worker);
         Workers GetWorker(IWorker worker);
         IWorker Login(string loginName, string password);
+        void ChangePassword(IWorker worker, string oldPassword, string newPassword);
     }
 
     public class WorkersService : DbDependentService, IWorkersService
     {
+        public void ChangePassword(IWorker worker, string oldPassword, string newPassword)
+        {
+            if(worker == null)
+            {
+                throw new ArgumentNullException("worker");
+            }
+
+            var dbWorker = DbService.Context.Workers.FirstOrDefault(w => w.worker_id == worker.WorkerId);
+
+            if (!string.Equals(oldPassword, Encoding.UTF8.GetString(dbWorker.password_string)))
+            {
+                throw new ArgumentException("Старий пароль неправильний!");
+            }
+
+            dbWorker.password_string = Encoding.UTF8.GetBytes(newPassword);
+            DbService.SaveChanges();
+        }
+
         public Workers GetWorker(IWorker worker)
         {
             if(worker == null)

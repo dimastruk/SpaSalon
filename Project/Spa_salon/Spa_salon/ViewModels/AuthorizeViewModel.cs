@@ -76,6 +76,7 @@ namespace Spa_salon.ViewModels
                 if(loginWorker != null)
                 {
                     Authorize(loginWorker);
+                    App.CurrentUser = loginWorker;
                 }
             }
             catch (Exception ex)
