@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Spa_salon.ViewModels
 {
 
-    public interface IWorkerViewModel : INotifyPropertyChanged
+    public interface IUserViewModel : INotifyPropertyChanged
     {
         #region Properties
         int WorkerId { get; }
@@ -38,10 +38,10 @@ namespace Spa_salon.ViewModels
         #endregion
     }
 
-    public class WorkerViewModel : ViewModelBase, IWorkerViewModel
+    public class UserViewModel : ViewModelBase, IUserViewModel
     {
         #region Constructors
-        public WorkerViewModel(IWorker worker)
+        public UserViewModel(IWorker worker)
         {
             WorkerId = worker.WorkerId;
             LastName = worker.LastName;

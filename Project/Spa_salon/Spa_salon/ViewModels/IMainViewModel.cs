@@ -13,17 +13,17 @@ namespace Spa_salon.ViewModels
 {
     public interface IMainViewModel : INotifyPropertyChanged
     {
-        IWorkerViewModel Worker { get; }
+        IUserViewModel User { get; }
     }
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
         public MainViewModel(IWorker worker)
         {
-            Worker = new WorkerViewModel(worker);
+            User = new UserViewModel(worker);
         }
 
-        public IWorkerViewModel Worker
+        public IUserViewModel User
         {
             get;
         }

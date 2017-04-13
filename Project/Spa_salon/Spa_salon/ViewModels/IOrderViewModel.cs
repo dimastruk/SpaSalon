@@ -35,7 +35,7 @@ namespace Spa_salon.ViewModels
     public class OrderViewModel : ViewModelBase, IOrderViewModel
     {
         #region Constructors
-        public OrderViewModel(WorkerViewModel worker)
+        public OrderViewModel(UserViewModel worker)
         {
             var orderService = new OrderService();
             WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(worker.Specialities));
