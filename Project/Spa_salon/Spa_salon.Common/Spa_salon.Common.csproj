@@ -61,6 +61,7 @@
     <Compile Include="Models\IService.cs" />
     <Compile Include="Models\ISpeciality.cs" />
     <Compile Include="Models\IWorker.cs" />
+    <Compile Include="Models\IWorkersSchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -68,12 +69,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Services\DbDependentService.cs" />
+    <Compile Include="Services\ICalendarService.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IDbService.cs" />
     <Compile Include="Services\IOrderDetailService.cs" />
     <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IServicesService.cs" />
     <Compile Include="Services\ISpecialitiesService.cs" />
+    <Compile Include="Services\IWorkersScheduleService.cs" />
     <Compile Include="Services\IWorkersService.cs" />
   </ItemGroup>
   <ItemGroup>

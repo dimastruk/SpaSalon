@@ -14,13 +14,12 @@ namespace Spa_salon.Common.Models
         TimeSpan EndTime { get; set; }
         bool IsActual { get; set; }
         IWorker Worker { get; set; }
-        ICalendar Calendar { get; set; }
     }
 
     public class WorkersSchedule : IWorkersSchedule
     {
         public WorkersSchedule(int workersScheduleId, DateTime dateValue, TimeSpan startTime,
-            TimeSpan endTime, bool isActual, IWorker worker, ICalendar calendar)
+            TimeSpan endTime, bool isActual, IWorker worker)
         {
             WorkersScheduleId = workersScheduleId;
             DateValue = dateValue;
@@ -28,13 +27,6 @@ namespace Spa_salon.Common.Models
             EndTime = endTime;
             IsActual = isActual;
             Worker = worker;
-            Calendar = calendar;
-        }
-
-        public ICalendar Calendar
-        {
-            get;
-            set;
         }
 
         public DateTime DateValue

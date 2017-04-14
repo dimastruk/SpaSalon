@@ -101,6 +101,7 @@
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\AuthorizeViewModel.cs" />
     <Compile Include="ViewModels\IOrderViewModel.cs" />
+    <Compile Include="ViewModels\IScheduleViewModel.cs" />
     <Compile Include="ViewModels\IUserViewModel.cs" />
     <Compile Include="ViewModels\IWorkerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

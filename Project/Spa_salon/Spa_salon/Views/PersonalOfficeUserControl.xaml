@@ -146,7 +146,13 @@
             <Border Padding="10,0,10,0">
                 <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="210" Header="Розклад роботи">
                     <Border Padding="5">
-                        <DataGrid></DataGrid>
+                        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding User.Schedule.ActualWorkerSchedules}" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding DateValue, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Дата" />
+                                <DataGridTextColumn Binding="{Binding StartTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Початок" />
+                                <DataGridTextColumn Binding="{Binding EndTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Кінець" />
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Border>
                 </GroupBox>
             </Border>
