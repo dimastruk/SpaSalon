@@ -14,7 +14,7 @@ namespace Spa_salon.DAL.DbModel
         public int worker_id { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? DateValue { get; set; }
+        public DateTime DateValue { get; set; }
 
         public TimeSpan start_time { get; set; }
 
