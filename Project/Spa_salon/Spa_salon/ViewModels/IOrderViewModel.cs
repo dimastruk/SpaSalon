@@ -38,9 +38,18 @@ namespace Spa_salon.ViewModels
         public OrderViewModel(UserViewModel user)
         {
             var orderService = new OrderService();
-            WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(user.Specialities));
-            AllOrders = WorkerOrders;
-            ActiveOrders = new ObservableCollection<IOrder>(WorkerOrders.Where(x => x.IsActual == true).ToList());
+
+            if (user.Status == WorkerStatus.Worker)
+            {
+                WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(user.Specialities));
+                AllOrders = WorkerOrders;
+                ActiveOrders = new ObservableCollection<IOrder>(WorkerOrders.Where(x => x.IsActual == true).ToList());
+            }
+            else
+            {
+                WorkerOrders = new ObservableCollection<IOrder>(orderService.GetOrders(user.Salon.SalodId));
+                AllOrders = WorkerOrders;
+            }
 
             OrderFilter = OrderFilters.LastName;
         }
