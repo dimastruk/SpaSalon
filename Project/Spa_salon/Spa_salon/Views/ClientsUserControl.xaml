@@ -7,10 +7,21 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Border Padding="0,10,0,10">
             <StackPanel>
-            <GroupBox Header="Пошук" Margin="10,0,10,0">
+                <GroupBox Header="Пошук" Margin="10,0,10,0">
                     <Border Padding="5">
                         <StackPanel>
                             <WrapPanel>
@@ -22,43 +33,49 @@
                         </StackPanel>
                     </Border>
                 </GroupBox>
-        
-            <Border VerticalAlignment="Top" Height="350" Padding="11">
-                <DataGrid></DataGrid>
-            </Border>
-            <Border Padding="10,5,10,0">
-                <GroupBox Header="Редагування" Height="180">
-                    <Border Padding="0,10,0,0">
+
+                <Border VerticalAlignment="Top" Height="350" Padding="11">
+                    <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Client.Clients}" IsReadOnly="True" SelectedItem="{Binding User.Client.SelectedClient}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding LastName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Прізвище" />
+                            <DataGridTextColumn Binding="{Binding FirstName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ім'я" />
+                            <DataGridTextColumn Binding="{Binding PhoneNumber}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Номер телефону" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+                <Border Padding="10,5,10,0">
+                    <GroupBox Header="Редагування" Height="180">
+                        <Border Padding="0,10,0,0">
                             <WrapPanel>
                                 <StackPanel Width="450">
                                     <StackPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Прізвище:" />
-                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewLastName}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Ім'я:" />
-                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewFirstName}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Номер телефону:" />
-                                            <TextBox Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewPhoneNumber}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                     </StackPanel>
                                 </StackPanel>
                                 <GroupBox Margin="20,-5,0,15" Header="Операції" Width="210">
                                     <Border Padding="10,10,10,5">
                                         <StackPanel>
-                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Змінити"/>
+                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Змінити" Command="{Binding User.Client.ChangeClientInfoCommand}"/>
                                             <Button Margin="5,5,5,10" Width="160" Height="35" Content="Додати"/>
                                         </StackPanel>
                                     </Border>
                                 </GroupBox>
                             </WrapPanel>
                         </Border>
-                </GroupBox>
-            </Border>
-        </StackPanel>
-      </Border>
+                    </GroupBox>
+                </Border>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

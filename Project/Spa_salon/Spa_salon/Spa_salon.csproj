@@ -98,6 +98,8 @@
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\IClientsViewModel.cs" />
+    <Compile Include="ViewModels\IClientViewModel.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\AuthorizeViewModel.cs" />
     <Compile Include="ViewModels\IOrderViewModel.cs" />

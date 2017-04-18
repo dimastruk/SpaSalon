@@ -9,9 +9,9 @@ namespace Spa_salon.Common.Models
     public interface IClient
     {
         int ClientId { get; }
-        string LastName { get; }
-        string FirstName { get; }
-        long PhoneNumber { get; }
+        string LastName { get; set; }
+        string FirstName { get; set; }
+        long PhoneNumber { get; set; }
     }
 
     public class Client : IClient
@@ -32,16 +32,19 @@ namespace Spa_salon.Common.Models
         public string FirstName
         {
             get;
+            set;
         }
 
         public string LastName
         {
             get;
+            set;
         }
 
         public long PhoneNumber
         {
             get;
+            set;
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Spa_salon.ViewModels
         IOrderViewModel Order { get; }
         IWorkerViewModel Worker { get; }
         IScheduleViewModel Schedule { get; }
+        IClientsViewModel Client { get; }
         #endregion Properties
 
         #region Collections
@@ -65,6 +66,7 @@ namespace Spa_salon.ViewModels
             Order = new OrderViewModel(this);
             Worker = new WorkerViewModel();
             Schedule = new ScheduleViewModel(this);
+            Client = new ClientsViewModel();
         }
         #endregion
 
@@ -259,6 +261,11 @@ namespace Spa_salon.ViewModels
         }
 
         public IScheduleViewModel Schedule
+        {
+            get;
+        }
+
+        public IClientsViewModel Client
         {
             get;
         }
