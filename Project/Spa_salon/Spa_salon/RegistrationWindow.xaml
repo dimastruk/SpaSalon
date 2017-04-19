@@ -10,7 +10,7 @@
         <StackPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Border Padding="10">
-                    <GroupBox Header="Авторизація">
+                    <GroupBox Header="Дані для авторизації">
                         <Border Padding="5,0,5,5">
                             <StackPanel>
                                 <StackPanel Margin="5">

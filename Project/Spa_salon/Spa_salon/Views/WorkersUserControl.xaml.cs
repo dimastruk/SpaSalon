@@ -42,5 +42,11 @@ namespace Spa_salon.Views
             var window = new RegistrationWindow();
             window.Show();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var window = new SpecialityWindow();
+            window.Show();
+        }
     }
 }

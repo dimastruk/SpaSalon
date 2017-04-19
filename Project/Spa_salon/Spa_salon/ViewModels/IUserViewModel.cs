@@ -31,7 +31,7 @@ namespace Spa_salon.ViewModels
         string LoginName { get; }
         WorkerStatus Status { get; }
         IOrderViewModel Order { get; }
-        IWorkerViewModel Worker { get; }
+        IWorkersViewModel Workers { get; }
         IScheduleViewModel Schedule { get; }
         IClientsViewModel Client { get; }
         #endregion Properties
@@ -64,7 +64,7 @@ namespace Spa_salon.ViewModels
             Specialities = new ObservableCollection<ISpeciality>(worker.Specialities);
 
             Order = new OrderViewModel(this);
-            Worker = new WorkerViewModel();
+            Workers = new WorkersViewModel();
             Schedule = new ScheduleViewModel(this);
             Client = new ClientsViewModel();
         }
@@ -255,7 +255,7 @@ namespace Spa_salon.ViewModels
             get;
         }
 
-        public IWorkerViewModel Worker
+        public IWorkersViewModel Workers
         {
             get;
         }
