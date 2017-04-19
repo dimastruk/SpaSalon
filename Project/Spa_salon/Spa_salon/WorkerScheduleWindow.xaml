@@ -1,0 +1,55 @@
+﻿<Window x:Class="Spa_salon.WorkerScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Spa_salon"
+        mc:Ignorable="d"
+        Title="Розклад роботи працівника" Height="340" Width="405">
+    <Window.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border Padding="10">
+            <StackPanel>
+                <DataGrid SelectionMode="Single" Height="170" Margin="0,0,0,10" AutoGenerateColumns="False" ItemsSource="{Binding User.Workers.SelectedWorker.Schedule.ActualWorkerSchedules}" SelectedItem="{Binding User.Workers.SelectedWorker.Schedule.SelectedSchedule}" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding DateValue, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Дата" />
+                        <DataGridTextColumn Binding="{Binding StartTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Початок" />
+                        <DataGridTextColumn Binding="{Binding EndTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Кінець" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <GroupBox Header="Редагування">
+                    <Border Padding="5">
+                        <WrapPanel>
+                            <WrapPanel Margin="0,0,2,0">
+                                <Label Margin="0,0,5,0">Дата:</Label>
+                                <TextBox VerticalContentAlignment="Center" Text="{Binding Path=User.Workers.SelectedWorker.Schedule.SelectedSchedule.DateValue, Mode=OneWay, StringFormat=dd.MM.yyyy}"  Width="60"></TextBox>
+                            </WrapPanel>
+                            <WrapPanel Margin="0,0,2,0">
+                                <Label Margin="0,0,5,0">Початок:</Label>
+                                <TextBox VerticalContentAlignment="Center" Text="{Binding Path=User.Workers.SelectedWorker.Schedule.SelectedSchedule.StartTime, Mode=OneWay, StringFormat=hh\\:mm}"  Width="60"></TextBox>
+                            </WrapPanel>
+                            <WrapPanel Margin="0,0,2,0">
+                                <Label Margin="0,0,5,0">Кінець:</Label>
+                                <TextBox VerticalContentAlignment="Center" Text="{Binding Path=User.Workers.SelectedWorker.Schedule.SelectedSchedule.EndTime, Mode=OneWay, StringFormat=hh\\:mm}" Width="60"></TextBox>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </Border>
+                </GroupBox>
+                <WrapPanel Margin="0,10,0,0" HorizontalAlignment="Right">
+                    <Button Margin="5,0,5,10" Width="70" Height="30" Content="Видалити"/>
+                    <Button Margin="5,0,5,10" Width="70" Height="30" Content="Змінити"/>
+                    <Button Margin="5,0,1,10" Width="70" Height="30" Content="Додати"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

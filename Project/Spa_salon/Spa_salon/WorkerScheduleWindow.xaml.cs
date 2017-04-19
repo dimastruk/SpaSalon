@@ -1,5 +1,4 @@
-﻿using Spa_salon.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +15,11 @@ using System.Windows.Shapes;
 namespace Spa_salon
 {
     /// <summary>
-    /// Логика взаимодействия для SpecialityWindow.xaml
+    /// Логика взаимодействия для WorkerScheduleWindow.xaml
     /// </summary>
-    public partial class SpecialityWindow : Window
+    public partial class WorkerScheduleWindow : Window
     {
-        public SpecialityWindow()
+        public WorkerScheduleWindow()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;

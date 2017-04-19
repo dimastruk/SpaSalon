@@ -46,6 +46,14 @@ namespace Spa_salon.Views
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             var window = new SpecialityWindow();
+            window.DataContext = Application.Current.MainWindow.DataContext;
+            window.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            var window = new WorkerScheduleWindow();
+            window.DataContext = Application.Current.MainWindow.DataContext;
             window.Show();
         }
     }

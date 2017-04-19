@@ -36,9 +36,9 @@ namespace Spa_salon.Common.Models
             string address, IPosition position, ISalon salon, string loginName)
         {
             WorkerId = workerId;
-            LastName = lastName;
-            FirstName = firstName;
-            MiddleName = middleName;
+            LastName = lastName.Trim();
+            FirstName = firstName.Trim();
+            MiddleName = middleName.Trim();
             DateOfBirth = dateOfBirth;
             PassportNumber = passportNumber;
             WorkbookNumber = workbookNumber;

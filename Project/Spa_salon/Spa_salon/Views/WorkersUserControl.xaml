@@ -4,8 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Spa_salon.Views"
+             xmlns:converters="clr-namespace:Spa_salon.Converters"
+             xmlns:enumerations="clr-namespace:Spa_salon.Common.Enumerations;assembly=Spa_salon.Common"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="670" d:DesignWidth="750">
+
+    <UserControl.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+        <converters:WorkerFiltersToStringConverter x:Key="WorkerFiltersToStringConverter"></converters:WorkerFiltersToStringConverter>
+        <ObjectDataProvider x:Key="ClientFilters" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enumerations:WorkerFilters"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
     <Grid>
         <StackPanel>
             <Border Padding="0,10,0,10">
@@ -16,7 +37,13 @@
                                 <TextBox FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
                                 <Button Margin="10,0,0,0" Width="100" Content="Знайти" />
                                 <Label Margin="20,5,5,0" Content="Фільтр:" />
-                                <ComboBox Width="148"/>
+                                <ComboBox FontSize="12" VerticalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource ClientFilters}}" Width="148">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Converter={StaticResource WorkerFiltersToStringConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </WrapPanel>
                         </StackPanel>
                     </Border>
@@ -26,14 +53,34 @@
                 <Border Padding="10">
                     <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="475" Height="250" Header="Список працівників">
                         <Border Padding="5">
-                            <DataGrid></DataGrid>
+                            <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Workers.Workers}" SelectedItem="{Binding User.Workers.SelectedWorker}" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding LastName}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Прізвище" />
+                                    <DataGridTextColumn Binding="{Binding FirstName}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Ім'я" />
+                                    <DataGridTextColumn Binding="{Binding MiddleName}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="По-батькові" />
+                                    <DataGridTextColumn Binding="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Дата народження" />
+                                    <DataGridTextColumn Binding="{Binding PassportNumber}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Паспорт" />
+                                    <DataGridTextColumn Binding="{Binding WorkbookNumber}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Номер трудової книги" />
+                                    <DataGridTextColumn Binding="{Binding MedicalbookNumber}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Номер медичної картки" />
+                                    <DataGridTextColumn Binding="{Binding IdNumber}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Ідентифікаційний номер" />
+                                    <DataGridTextColumn Binding="{Binding PhoneNumber}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Номер телефону" />
+                                    <DataGridTextColumn Binding="{Binding Address}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Адреса" />
+                                    <DataGridTextColumn Binding="{Binding Position.PositionName}" ElementStyle="{StaticResource CellCenterAlign}" MinWidth="110" Header="Посада" />
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Border>
                     </GroupBox>
                 </Border>
                 <Border Padding="10">
                     <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Height="250" Header="Час роботи">
                         <Border Padding="5">
-                            <DataGrid></DataGrid>
+                            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding User.Workers.SelectedWorker.Schedule.ActualWorkerSchedules}" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding DateValue, StringFormat=dd.MM.yyyy}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Дата" />
+                                    <DataGridTextColumn Binding="{Binding StartTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Початок" />
+                                    <DataGridTextColumn Binding="{Binding EndTime, StringFormat=hh\\:mm}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Кінець" />
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Border>
                     </GroupBox>
                 </Border>
@@ -45,15 +92,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Прізвище:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.LastName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Ім'я:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.FirstName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="По-батькові:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.MiddleName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -65,15 +112,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Дата народження:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.DateOfBirth, Mode=OneWay, StringFormat=dd.MM.yyyy}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Адреса проживання:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.Address, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер телефону:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.PhoneNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -85,15 +132,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Паспорт:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.PassportNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер трудової книги:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.WorkbookNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер медичної картки:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.MedicalbookNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -105,15 +152,11 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Ідентифікаційний номер:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                    <TextBox Text="{Binding User.Workers.SelectedWorker.IdNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="140"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Посада:" />
-                                    <ComboBox VerticalContentAlignment="Center" Height="25" Width="140"/>
-                                </StackPanel>
-                                <StackPanel Margin="5">
-                                    <Label Content="Комісійні:" />
-                                    <TextBox VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                    <ComboBox IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding User.Workers.AllPositions, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="PositionName" SelectedValue="{Binding User.Workers.SelectedPosition.PositionName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="PositionName" VerticalContentAlignment="Center" Height="25" Width="140"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -122,6 +165,7 @@
             </WrapPanel>
             <WrapPanel Margin="0,0,10,0" HorizontalAlignment="Right">
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Показати дохід" Click="Button_Click_1"/>
+                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Розклад роботи" Click="Button_Click_4"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Спеціальності" Click="Button_Click_3"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Змінити"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Додати" Click="Button_Click_2"/>

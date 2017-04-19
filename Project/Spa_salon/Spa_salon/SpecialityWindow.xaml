@@ -5,26 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spa_salon"
         mc:Ignorable="d"
-        Title="Спеціальності" Height="320" Width="450">
+        Title="Спеціальності працівника" Height="320" Width="450">
+
+    <Window.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Border Padding="10">
             <StackPanel>
-                <DataGrid Margin="0,0,0,10" Height="150"></DataGrid>
+                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Workers.SelectedWorker.Specialities}" SelectedItem="{Binding User.Workers.SelectedWorker.SelectedSpeciality}" Margin="0,0,0,10" Height="150" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Service.ServiceName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Послуга" />
+                        <DataGridTextColumn Binding="{Binding Commisions}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Комісійні (%)" />
+                    </DataGrid.Columns>
+                </DataGrid>
                 <GroupBox Header="Редагування">
                     <Border Padding="5">
                         <WrapPanel>
                             <WrapPanel>
                                 <Label Margin="0,0,10,0">Послуга:</Label>
-                                <TextBox Width="120"></TextBox>
+                                <TextBox VerticalContentAlignment="Center" Text="{Binding Path=User.Workers.SelectedWorker.SelectedSpeciality.Service.ServiceName, Mode=OneWay}"  Width="120"></TextBox>
                             </WrapPanel>
                             <WrapPanel>
                                 <Label Margin="7,0,10,0">Комісійні:</Label>
-                                <TextBox Width="120"></TextBox>
+                                <TextBox VerticalContentAlignment="Center" Text="{Binding Path=User.Workers.SelectedWorker.SelectedSpeciality.Commisions, Mode=OneWay}" Width="120"></TextBox>
                             </WrapPanel>
                         </WrapPanel>
                     </Border>
                 </GroupBox>
                 <WrapPanel Margin="0,10,0,0" HorizontalAlignment="Right">
+                    <Button Margin="5,0,5,10" Width="70" Height="30" Content="Видалити"/>
                     <Button Margin="5,0,5,10" Width="70" Height="30" Content="Змінити"/>
                     <Button Margin="5,0,1,10" Width="70" Height="30" Content="Додати"/>
                 </WrapPanel>

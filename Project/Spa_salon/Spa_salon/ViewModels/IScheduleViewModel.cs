@@ -1,8 +1,6 @@
 ﻿using Spa_salon.Common.Models;
-using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,42 +10,87 @@ namespace Spa_salon.ViewModels
 {
     public interface IScheduleViewModel : INotifyPropertyChanged
     {
-        #region Properties
-        #endregion
-
-        #region Collections
-        ObservableCollection<IWorkersSchedule> AllWorkerSchedules { get; }
-        ObservableCollection<IWorkersSchedule> ActualWorkerSchedules { get; }
-        #endregion
-
-        #region Commands
-        #endregion
+        int WorkersScheduleId { get; }
+        DateTime DateValue { get; set; }
+        TimeSpan StartTime { get; set; }
+        TimeSpan EndTime { get; set; }
+        bool IsActual { get; set; }
     }
 
     public class ScheduleViewModel : ViewModelBase, IScheduleViewModel
     {
-        #region Constructors
-        public ScheduleViewModel(UserViewModel user)
+        public ScheduleViewModel(IWorkersSchedule schedule)
         {
-            var workersScheduleService = new WorkersScheduleService();
-            AllWorkerSchedules = new ObservableCollection<IWorkersSchedule>(workersScheduleService.GetWorkersSchedules(user.WorkerId));
-            ActualWorkerSchedules = new ObservableCollection<IWorkersSchedule>(AllWorkerSchedules.Where(s => s.IsActual == true));
+            WorkersScheduleId = schedule.WorkersScheduleId;
+            DateValue = schedule.DateValue;
+            StartTime = schedule.StartTime;
+            EndTime = schedule.EndTime;
+            IsActual = schedule.IsActual;
         }
-        #endregion
 
-        #region Properties
-        public ObservableCollection<IWorkersSchedule> AllWorkerSchedules
+        private DateTime _dateValue;
+        public DateTime DateValue
+        {
+            get
+            {
+                return _dateValue;
+            }
+
+            set
+            {
+                _dateValue = value;
+                OnPropertyChanged("DateValue");
+            }
+        }
+
+        private TimeSpan _endTime;
+        public TimeSpan EndTime
+        {
+            get
+            {
+                return _endTime;
+            }
+
+            set
+            {
+                _endTime = value;
+                OnPropertyChanged("EndTime");
+            }
+        }
+
+        private bool _isActual;
+        public bool IsActual
+        {
+            get
+            {
+                return _isActual;
+            }
+
+            set
+            {
+                _isActual = value;
+                OnPropertyChanged("IsActual");
+            }
+        }
+
+        private TimeSpan _startTime;
+        public TimeSpan StartTime
+        {
+            get
+            {
+                return _startTime;
+            }
+
+            set
+            {
+                _startTime = value;
+                OnPropertyChanged("StartTime");
+            }
+        }
+
+        public int WorkersScheduleId
         {
             get;
         }
-
-        public ObservableCollection<IWorkersSchedule> ActualWorkerSchedules
-        {
-            get;
-        }
-        #endregion
-
-        #region Commands
-        #endregion
     }
 }

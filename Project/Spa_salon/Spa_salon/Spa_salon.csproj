@@ -92,6 +92,7 @@
     <Compile Include="Converters\ClientFiltersToStringConverter.cs" />
     <Compile Include="Converters\IsActualToWordConverter.cs" />
     <Compile Include="Converters\OrderFiltersToStringConverter.cs" />
+    <Compile Include="Converters\WorkerFiltersToStringConverter.cs" />
     <Compile Include="Converters\WorkerStatusToVisibilityConverter.cs" />
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
@@ -107,6 +108,8 @@
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\AuthorizeViewModel.cs" />
     <Compile Include="ViewModels\IOrderViewModel.cs" />
+    <Compile Include="ViewModels\IPositionViewModel.cs" />
+    <Compile Include="ViewModels\ISchedulesViewModel.cs" />
     <Compile Include="ViewModels\IScheduleViewModel.cs" />
     <Compile Include="ViewModels\IUserViewModel.cs" />
     <Compile Include="ViewModels\IWorkersViewModel.cs" />
@@ -135,6 +138,9 @@
     </Compile>
     <Compile Include="Views\WorkersUserControl.xaml.cs">
       <DependentUpon>WorkersUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerScheduleWindow.xaml.cs">
+      <DependentUpon>WorkerScheduleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
@@ -192,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WorkersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkerScheduleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,7 +9,7 @@ namespace Spa_salon.Common.Models
     public interface IPosition
     {
         int PositionId { get; }
-        string PositionName { get; }
+        string PositionName { get; set; }
     }
 
     public class Position : IPosition
@@ -17,7 +17,7 @@ namespace Spa_salon.Common.Models
         public Position(int positionId, string positionName)
         {
             PositionId = positionId;
-            PositionName = positionName.Replace(" ", string.Empty);
+            PositionName = positionName.Trim();
         }
 
         public int PositionId
@@ -28,6 +28,7 @@ namespace Spa_salon.Common.Models
         public string PositionName
         {
             get;
+            set;
         }
     }
 }

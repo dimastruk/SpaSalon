@@ -52,6 +52,7 @@
     <Compile Include="Enumerations\ClientFilters.cs" />
     <Compile Include="Enumerations\EnumHelper.cs" />
     <Compile Include="Enumerations\OrderFilters.cs" />
+    <Compile Include="Enumerations\WorkerFilters.cs" />
     <Compile Include="Enumerations\WorkerStatus.cs" />
     <Compile Include="Models\ICalendar.cs" />
     <Compile Include="Models\IClient.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Services\IDbService.cs" />
     <Compile Include="Services\IOrderDetailService.cs" />
     <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\IPositionService.cs" />
     <Compile Include="Services\IServicesService.cs" />
     <Compile Include="Services\ISpecialitiesService.cs" />
     <Compile Include="Services\IWorkersScheduleService.cs" />

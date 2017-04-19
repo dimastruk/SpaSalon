@@ -14,6 +14,7 @@ namespace Spa_salon.Common.Services
     {
         IWorker GetWorker(Workers worker);
         Workers GetWorker(IWorker worker);
+        ICollection<IWorker> GetWorkers(int salonId);
         IWorker Login(string loginName, string password);
         void ChangePassword(IWorker worker, string oldPassword, string newPassword);
     }
@@ -67,6 +68,20 @@ namespace Spa_salon.Common.Services
             return new Worker(worker.worker_id, worker.last_name, worker.first_name, worker.middle_name,
                 worker.date_of_birth, worker.passport_number, worker.workbook_number, worker.medicalbook_number,
                 worker.ID_number, worker.phone_number, worker.address, position, salon, worker.login_name);
+        }
+
+        public ICollection<IWorker> GetWorkers(int salonId)
+        {
+            var list = new List<IWorker>();
+
+            var workers = DbService.Context.Workers.Where(w => w.salon_id == salonId);
+
+            foreach(var worker in workers)
+            {
+                list.Add(GetWorker(worker));
+            }
+
+            return list;
         }
 
         public IWorker Login(string loginName, string password)
