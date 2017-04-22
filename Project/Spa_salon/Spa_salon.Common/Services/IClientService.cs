@@ -14,10 +14,29 @@ namespace Spa_salon.Common.Services
         IClient GetClient(Clients client);
         ICollection<IClient> GetClients();
         void ChangeClientInfo(IClient client, string newLastName, string newFirstName, string newPhoneNumber);
+        void AddClient(string lastName, string firstName, string phoneNumber);
     }
 
     public class ClientService : DbDependentService, IClientService
     {
+        public void AddClient(string lastName, string firstName, string phoneNumber)
+        {
+            var newClient = new Clients { last_name = lastName, first_name = firstName, phone_number = long.Parse(phoneNumber) };
+
+            var clients = DbService.Context.Clients;
+
+            foreach(var client in clients)
+            {
+                if(client.last_name.Trim() == newClient.last_name && client.first_name.Trim() == newClient.first_name && client.phone_number == newClient.phone_number)
+                {
+                    throw new ArgumentException("Даний клієнт існує у базі!");
+                }
+            }
+
+            DbService.Context.Clients.Add(newClient);
+            DbService.SaveChanges();
+        }
+
         public void ChangeClientInfo(IClient client, string newLastName, string newFirstName, string newPhoneNumber)
         {
             if(client == null)
@@ -34,7 +53,17 @@ namespace Spa_salon.Common.Services
             
             if(DbClient == null)
             {
-                throw new Exception("Даний клієнт не існує");
+                throw new Exception("Даний клієнт не існує!");
+            }
+
+            var clients = DbService.Context.Clients;
+
+            foreach (var dbClient in clients)
+            {
+                if (dbClient.last_name.Trim() == newLastName && dbClient.first_name.Trim() == newFirstName && dbClient.phone_number.ToString() == newPhoneNumber);
+                {
+                    throw new ArgumentException("Даний клієнт існує у базі!");
+                }
             }
 
             DbClient.last_name = newLastName;

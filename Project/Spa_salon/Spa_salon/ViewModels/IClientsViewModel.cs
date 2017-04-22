@@ -21,6 +21,7 @@ namespace Spa_salon.ViewModels
         IClientViewModel SelectedClient { get; set; }
         ICommand ChangeClientInfoCommand { get; }
         ICommand SearchClientCommand { get; }
+        ICommand AddClientCommand { get; }
         ClientFilters ClientFilter { get; set; }
         string SearchString { get; set; }
         string NewLastName { get; set; }
@@ -165,6 +166,7 @@ namespace Spa_salon.ViewModels
         public ObservableCollection<IClientViewModel> AllClients
         {
             get;
+            set;
         }
         #endregion
 
@@ -194,6 +196,47 @@ namespace Spa_salon.ViewModels
                 }
 
                 return _searchClientCommand;
+            }
+        }
+
+        private ICommand _addClientCommand;
+        public ICommand AddClientCommand
+        {
+            get
+            {
+                if(_addClientCommand == null)
+                {
+                    _addClientCommand = new DelegateCommand(AddClientCommand_Execute, AddClientCommand_CanExecute);
+                }
+
+                return _addClientCommand;
+            }
+        }
+
+        private bool AddClientCommand_CanExecute(object o)
+        {
+            return !string.IsNullOrEmpty(NewLastName) && !string.IsNullOrEmpty(NewFirstName) && !string.IsNullOrEmpty(NewPhoneNumber);
+        }
+
+        private void AddClientCommand_Execute(object o)
+        {
+            try
+            {
+                var clientService = new ClientService();
+                clientService.AddClient(NewLastName, NewFirstName, NewPhoneNumber);
+
+                AllClients.Clear();
+                foreach (var client in clientService.GetClients())
+                {
+                    AllClients.Add(new ClientViewModel() { ClientId = client.ClientId, LastName = client.LastName, FirstName = client.FirstName, PhoneNumber = client.PhoneNumber });
+                }
+
+                MessageBox.Show("Клієнта успішно додано!");
+                Clients = AllClients;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!");
             }
         }
 

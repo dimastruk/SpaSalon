@@ -67,15 +67,15 @@
                                     <StackPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Прізвище:" />
-                                            <TextBox Text="{Binding User.Client.NewLastName}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewLastName, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Ім'я:" />
-                                            <TextBox Text="{Binding User.Client.NewFirstName}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewFirstName, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                         <WrapPanel Margin="10,5,0,5">
                                             <Label Width="130" Margin="0,5,0,0" Content="Номер телефону:" />
-                                            <TextBox Text="{Binding User.Client.NewPhoneNumber}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
+                                            <TextBox Text="{Binding User.Client.NewPhoneNumber, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,0,0" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="300"></TextBox>
                                         </WrapPanel>
                                     </StackPanel>
                                 </StackPanel>
@@ -83,7 +83,7 @@
                                     <Border Padding="10,10,10,5">
                                         <StackPanel>
                                             <Button Margin="5,5,5,10" Width="160" Height="35" Content="Змінити" Command="{Binding User.Client.ChangeClientInfoCommand}"/>
-                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Додати"/>
+                                            <Button Margin="5,5,5,10" Width="160" Height="35" Content="Додати" Command="{Binding User.Client.AddClientCommand}"/>
                                         </StackPanel>
                                     </Border>
                                 </GroupBox>
