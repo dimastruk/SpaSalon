@@ -1,4 +1,5 @@
 ﻿using IssueTracker.Commands;
+using Spa_salon.Common.Enumerations;
 using Spa_salon.Common.Models;
 using Spa_salon.Common.Services;
 using System;
@@ -15,9 +16,13 @@ namespace Spa_salon.ViewModels
 {
     public interface IClientsViewModel : INotifyPropertyChanged
     {
-        ObservableCollection<IClientViewModel> Clients { get; }
+        ObservableCollection<IClientViewModel> Clients { get; set; }
+        ObservableCollection<IClientViewModel> AllClients { get; }
         IClientViewModel SelectedClient { get; set; }
         ICommand ChangeClientInfoCommand { get; }
+        ICommand SearchClientCommand { get; }
+        ClientFilters ClientFilter { get; set; }
+        string SearchString { get; set; }
         string NewLastName { get; set; }
         string NewFirstName { get; set; }
         string NewPhoneNumber { get; set; }
@@ -29,19 +34,32 @@ namespace Spa_salon.ViewModels
         public ClientsViewModel()
         {
             var clientService = new ClientService();
-            Clients = new ObservableCollection<IClientViewModel>();
+            AllClients = new ObservableCollection<IClientViewModel>();
 
             foreach(var client in clientService.GetClients())
             {
-                Clients.Add(new ClientViewModel() { ClientId = client.ClientId, LastName = client.LastName, FirstName = client.FirstName, PhoneNumber = client.PhoneNumber });
+                AllClients.Add(new ClientViewModel() { ClientId = client.ClientId, LastName = client.LastName, FirstName = client.FirstName, PhoneNumber = client.PhoneNumber });
             }
+
+            Clients = AllClients;
+
+            ClientFilter = ClientFilters.LastName;
         }
         #endregion
 
         #region Properties
+        private ObservableCollection<IClientViewModel> _clients;
         public ObservableCollection<IClientViewModel> Clients
         {
-            get;
+            get
+            {
+                return _clients;
+            }
+            set
+            {
+                _clients = value;
+                OnPropertyChanged("Clients");
+            }
         }
 
         private IClientViewModel _selectedClient;
@@ -55,9 +73,12 @@ namespace Spa_salon.ViewModels
             set
             {
                 _selectedClient = value;
-                NewLastName = _selectedClient.LastName;
-                NewFirstName = _selectedClient.FirstName;
-                NewPhoneNumber = _selectedClient.PhoneNumber.ToString();
+                if (_selectedClient != null)
+                {
+                    NewLastName = _selectedClient.LastName;
+                    NewFirstName = _selectedClient.FirstName;
+                    NewPhoneNumber = _selectedClient.PhoneNumber.ToString();
+                }
                 OnPropertyChanged("SelectedClient");
             }
         }
@@ -106,6 +127,45 @@ namespace Spa_salon.ViewModels
                 OnPropertyChanged("NewPhoneNumber");
             }
         }
+
+        private string _searchString;
+        public string SearchString
+        {
+            get
+            {
+                return _searchString;
+            }
+
+            set
+            {
+                _searchString = value;
+                if(string.IsNullOrEmpty(_searchString))
+                {
+                    Clients = AllClients;
+                }
+                OnPropertyChanged("SearchString");
+            }
+        }
+
+        private ClientFilters _clientFilter;
+        public ClientFilters ClientFilter
+        {
+            get
+            {
+                return _clientFilter;
+            }
+
+            set
+            {
+                _clientFilter = value;
+                OnPropertyChanged("ClientFilter");
+            }
+        }
+
+        public ObservableCollection<IClientViewModel> AllClients
+        {
+            get;
+        }
         #endregion
 
         #region Commands
@@ -120,6 +180,62 @@ namespace Spa_salon.ViewModels
                 }
 
                 return _changeClientInfoCommand;
+            }
+        }
+
+        private ICommand _searchClientCommand;
+        public ICommand SearchClientCommand
+        {
+            get
+            {
+                if(_searchClientCommand == null)
+                {
+                    _searchClientCommand = new DelegateCommand(SearchClientCommand_Execute, SearchClientCommand_CanExecute);
+                }
+
+                return _searchClientCommand;
+            }
+        }
+
+        private bool SearchClientCommand_CanExecute(object o)
+        {
+            return !string.IsNullOrEmpty(SearchString);
+        }
+
+        private void SearchClientCommand_Execute(object o)
+        {
+            try
+            {
+                switch(ClientFilter)
+                {
+                    case ClientFilters.LastName:
+                    {
+                        Clients = new ObservableCollection<IClientViewModel>(AllClients.Where(cl => cl.LastName == SearchString).ToList());
+                        break;
+                    }
+
+                    case ClientFilters.FirstName:
+                    {
+                        Clients = new ObservableCollection<IClientViewModel>(AllClients.Where(cl => cl.FirstName == SearchString).ToList());
+                        break;
+                    }
+
+                    case ClientFilters.PhoneNumber:
+                    {
+                        Clients = new ObservableCollection<IClientViewModel>(AllClients.Where(cl => cl.PhoneNumber.ToString() == SearchString).ToList());
+                        break;
+                    }
+
+                    default:
+                    {
+                        Clients = AllClients;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!");
             }
         }
 
@@ -147,6 +263,7 @@ namespace Spa_salon.ViewModels
                 client.FirstName = clientModel.FirstName;
                 client.PhoneNumber = clientModel.PhoneNumber;
                 MessageBox.Show("Дані успішно змінено!");
+                Clients = AllClients;
             }
             catch (Exception ex)
             {

@@ -35,10 +35,10 @@
                     <Border Padding="5">
                         <StackPanel>
                             <WrapPanel>
-                                <TextBox FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
-                                <Button Margin="10,0,0,0" Width="100" Content="Знайти" />
+                                <TextBox Text="{Binding User.Client.SearchString, UpdateSourceTrigger=PropertyChanged}" FontSize="15" VerticalContentAlignment="Center" Height="35" Width="350"></TextBox>
+                                <Button Command="{Binding User.Client.SearchClientCommand}" Margin="10,0,0,0" Width="100" Content="Знайти" />
                                 <Label Margin="20,5,5,0" Content="Фільтр:" />
-                                <ComboBox FontSize="15" VerticalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource ClientFilters}}" Width="148">
+                                <ComboBox FontSize="15" VerticalContentAlignment="Center" ItemsSource="{Binding Source={StaticResource ClientFilters}}" SelectedItem="{Binding User.Client.ClientFilter}" Width="148">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Converter={StaticResource ClientFiltersToStringConverter}}"/>
