@@ -6,6 +6,17 @@
              xmlns:local="clr-namespace:Spa_salon.Views"
              mc:Ignorable="d" 
              d:DesignHeight="670" d:DesignWidth="750">
+
+    <UserControl.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
     <StackPanel>
         <Border Padding="10">
             <GroupBox Header="Посади" Height="300" VerticalAlignment="Top">
@@ -54,7 +65,12 @@
                         </WrapPanel>
                         <WrapPanel>
                             <Border Height="230" Padding="5,15,0,10" Width="450" HorizontalAlignment="Left">
-                                <DataGrid></DataGrid>
+                                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Services.Services}" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding ServiceName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Послуга" />
+                                        <DataGridTextColumn Binding="{Binding ServicePrice}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ціна" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
                             </Border>
                             <Border Height="230" Padding="5,6,0,8" Width="225" HorizontalAlignment="Left">
                                 <GroupBox Margin="10,0,0,0" Header="Редагування">
