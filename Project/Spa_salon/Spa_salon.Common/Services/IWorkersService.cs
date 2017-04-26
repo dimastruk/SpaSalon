@@ -17,6 +17,7 @@ namespace Spa_salon.Common.Services
         ICollection<IWorker> GetWorkers(int salonId);
         IWorker Login(string loginName, string password);
         void ChangePassword(IWorker worker, string oldPassword, string newPassword);
+        void ChangeWorkerInfo(IWorker currentWorker, IWorker newWorker);
     }
 
     public class WorkersService : DbDependentService, IWorkersService
@@ -37,6 +38,73 @@ namespace Spa_salon.Common.Services
 
             dbWorker.password_string = Encoding.UTF8.GetBytes(newPassword);
             DbService.SaveChanges();
+        }
+
+        public void ChangeWorkerInfo(IWorker currentWorker, IWorker newWorker)
+        {
+            if(currentWorker == null)
+            {
+                throw new ArgumentNullException("currentWorker");
+            }
+
+            if(newWorker == null)
+            {
+                throw new ArgumentNullException("newWorker");
+            }
+
+            var dbWorkers = DbService.Context.Workers;
+
+            foreach(var worker in dbWorkers)
+            {
+                if(worker.worker_id == currentWorker.WorkerId)
+                {
+                    continue;
+                }
+
+                if(worker.ID_number == newWorker.IdNumber)
+                {
+                    throw new Exception("Даний ідентифікаційний номер вже внесений в базу!");
+                }
+
+                if(worker.medicalbook_number == newWorker.MedicalbookNumber)
+                {
+                    throw new Exception("Даний номер медичної картки вже внесений в базу!");
+                }
+
+                if(worker.passport_number == newWorker.PassportNumber)
+                {
+                    throw new Exception("Даний номер паспорту вже внесений в базу!");
+                }
+
+                if(worker.phone_number == newWorker.PhoneNumber)
+                {
+                    throw new Exception("Даний номер телефону вже внесений в базу!");
+                }
+
+                if(worker.workbook_number == newWorker.WorkbookNumber)
+                {
+                    throw new Exception("Даний номер трудової книги вже внесений в базу!");
+                }
+            }
+
+            var dbWorker = DbService.Context.Workers.FirstOrDefault(w => w.worker_id == currentWorker.WorkerId);
+
+            dbWorker.last_name = newWorker.LastName;
+            dbWorker.first_name = newWorker.FirstName;
+            dbWorker.middle_name = newWorker.MiddleName;
+            dbWorker.date_of_birth = newWorker.DateOfBirth;
+            dbWorker.passport_number = newWorker.PassportNumber;
+            dbWorker.workbook_number = newWorker.WorkbookNumber;
+            dbWorker.medicalbook_number = newWorker.MedicalbookNumber;
+            dbWorker.ID_number = newWorker.IdNumber;
+            dbWorker.phone_number = newWorker.PhoneNumber;
+            dbWorker.address = newWorker.Address;
+            dbWorker.position_id = newWorker.Position.PositionId;
+
+            //var positionService = new PositionService();
+            //dbWorker.Positions = positionService.GetPosition(new Position(newWorker.Position.PositionId, newWorker.Position.PositionName));
+
+            DbService.Context.SaveChanges();
         }
 
         public Workers GetWorker(IWorker worker)

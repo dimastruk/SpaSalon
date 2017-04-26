@@ -163,10 +163,6 @@ namespace Spa_salon.ViewModels
             set
             {
                 _newSelectedPosition = value;
-                if(NewWorker != null)
-                {
-                    NewWorker.Position = _newSelectedPosition;
-                }
                 OnPropertyChanged("NewSelectedPosition");
             }
         }
@@ -258,7 +254,38 @@ namespace Spa_salon.ViewModels
         {
             try
             {
-                
+                var workerService = new WorkersService();
+                var positionService = new PositionService();
+
+                NewWorker.Position.PositionName = NewSelectedPosition.PositionName;
+                NewWorker.Position.PositionId = positionService.GetID(NewWorker.Position.PositionName);
+
+                var selectedWorkerModel = new Worker(SelectedWorker.WorkerId, SelectedWorker.LastName, SelectedWorker.FirstName,
+                    SelectedWorker.MiddleName, Convert.ToDateTime(SelectedWorker.DateOfBirth), SelectedWorker.PassportNumber, SelectedWorker.WorkbookNumber,
+                    SelectedWorker.MedicalbookNumber, SelectedWorker.IdNumber, SelectedWorker.PhoneNumber, SelectedWorker.Address,
+                    new Position(SelectedWorker.Position.PositionId, SelectedWorker.Position.PositionName));
+
+                var newWorkerModel = new Worker(NewWorker.WorkerId, NewWorker.LastName, NewWorker.FirstName,
+                    NewWorker.MiddleName, Convert.ToDateTime(NewWorker.DateOfBirth), NewWorker.PassportNumber, NewWorker.WorkbookNumber,
+                    NewWorker.MedicalbookNumber, NewWorker.IdNumber, NewWorker.PhoneNumber, NewWorker.Address,
+                    new Position(NewWorker.Position.PositionId, NewWorker.Position.PositionName));
+
+                workerService.ChangeWorkerInfo(selectedWorkerModel, newWorkerModel);
+
+                var worker = Workers.FirstOrDefault(w => w.WorkerId == SelectedWorker.WorkerId);
+                worker.LastName = NewWorker.LastName;
+                worker.FirstName = NewWorker.FirstName;
+                worker.MiddleName = NewWorker.MiddleName;
+                worker.DateOfBirth = NewWorker.DateOfBirth;
+                worker.PassportNumber = NewWorker.PassportNumber;
+                worker.WorkbookNumber = NewWorker.WorkbookNumber;
+                worker.MedicalbookNumber = NewWorker.MedicalbookNumber;
+                worker.IdNumber = NewWorker.IdNumber;
+                worker.PhoneNumber = NewWorker.PhoneNumber;
+                worker.Address = NewWorker.Address;
+                worker.Position = NewWorker.Position;
+
+                MessageBox.Show("Дані успішно змінено!");
             }
             catch (Exception ex)
             {

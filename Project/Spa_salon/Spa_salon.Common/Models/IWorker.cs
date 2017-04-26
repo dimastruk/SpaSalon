@@ -67,6 +67,24 @@ namespace Spa_salon.Common.Models
             Specialities = specialitiesService.GetSpecialities(WorkerId);
         }
 
+        public Worker(int workerId, string lastName, string firstName, string middleName, DateTime dateOfBirth,
+           string passportNumber, int workbookNumber, int medicalbookNumber, long idNumber, long phoneNumber,
+           string address, IPosition position)
+        {
+            WorkerId = workerId;
+            LastName = lastName.Trim();
+            FirstName = firstName.Trim();
+            MiddleName = middleName.Trim();
+            DateOfBirth = dateOfBirth;
+            PassportNumber = passportNumber;
+            WorkbookNumber = workbookNumber;
+            MedicalbookNumber = medicalbookNumber;
+            IdNumber = idNumber;
+            PhoneNumber = phoneNumber;
+            Address = address;
+            Position = position;
+        }
+
         public string Address
         {
             get;

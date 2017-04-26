@@ -10,7 +10,7 @@ namespace Spa_salon.ViewModels
 {
     public interface IPositionViewModel : INotifyPropertyChanged
     {
-        int PositionId { get; }
+        int PositionId { get; set; }
         string PositionName { get; set; }
     }
 
@@ -30,6 +30,7 @@ namespace Spa_salon.ViewModels
         public int PositionId
         {
             get;
+            set;
         }
 
         private string _positionName;
