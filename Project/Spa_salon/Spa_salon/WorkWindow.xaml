@@ -8,7 +8,8 @@
         xmlns:views="clr-namespace:Spa_salon.Views"
         xmlns:converters="clr-namespace:Spa_salon.Converters"
         mc:Ignorable="d"
-        Title="Облік мережі spa-салонів" Height="700" Width="750">
+        Title="Облік мережі spa-салонів" Height="700" Width="750"
+        Closing="Window_Closing">
 
     <Window.Resources>
         <converters:WorkerStatusToVisibilityConverter x:Key="WorkerStatusToVisibilityConverter" />
