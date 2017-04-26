@@ -92,15 +92,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Прізвище:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.LastName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.LastName, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Ім'я:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.FirstName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="По-батькові:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.MiddleName, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="100"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.MiddleName, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="100"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -112,15 +112,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Дата народження:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.DateOfBirth, Mode=OneWay, StringFormat=dd.MM.yyyy}" VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.DateOfBirth, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Адреса проживання:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.Address, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.Address, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер телефону:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.PhoneNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="120"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="120"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -132,15 +132,15 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Паспорт:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.PassportNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.PassportNumber, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер трудової книги:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.WorkbookNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.WorkbookNumber, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Номер медичної картки:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.MedicalbookNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="135"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.MedicalbookNumber, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="135"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -152,11 +152,11 @@
                             <StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Ідентифікаційний номер:" />
-                                    <TextBox Text="{Binding User.Workers.SelectedWorker.IdNumber, Mode=OneWay}" VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                    <TextBox Text="{Binding User.Workers.NewWorker.IdNumber, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Height="25" Width="140"/>
                                 </StackPanel>
                                 <StackPanel Margin="5">
                                     <Label Content="Посада:" />
-                                    <ComboBox IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding User.Workers.AllPositions, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="PositionName" SelectedValue="{Binding User.Workers.SelectedPosition.PositionName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="PositionName" VerticalContentAlignment="Center" Height="25" Width="140"/>
+                                    <ComboBox IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding User.Workers.AllPositions, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="PositionName" SelectedValue="{Binding User.Workers.NewSelectedPosition.PositionName, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="PositionName" VerticalContentAlignment="Center" Height="25" Width="140"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
@@ -167,7 +167,7 @@
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Показати дохід" Click="Button_Click_1"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Розклад роботи" Click="Button_Click_4"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Спеціальності" Click="Button_Click_3"/>
-                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Змінити"/>
+                <Button Margin="5,0,5,10" Width="100" Height="35" Content="Змінити" Command="{Binding User.Workers.ChangeWorkerInfoCommand}"/>
                 <Button Margin="5,0,5,10" Width="100" Height="35" Content="Додати" Click="Button_Click_2"/>
             </WrapPanel>
         </StackPanel>

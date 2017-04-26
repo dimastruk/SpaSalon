@@ -1,5 +1,6 @@
 ﻿using IssueTracker.Commands;
 using Spa_salon.Common.Enumerations;
+using Spa_salon.Common.Models;
 using Spa_salon.Common.Services;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,15 @@ namespace Spa_salon.ViewModels
     public interface IWorkersViewModel : INotifyPropertyChanged
     {
         ObservableCollection<IWorkerViewModel> Workers { get; set; }
-
         ObservableCollection<IWorkerViewModel> AllWorkers { get; }
         IWorkerViewModel SelectedWorker { get; set; }
+        IWorkerViewModel NewWorker { get; set; }
         ObservableCollection<IPositionViewModel> AllPositions { get; }
         IPositionViewModel SelectedPosition { get; set; }
+        IPositionViewModel NewSelectedPosition { get; set; }
         WorkerFilters WorkerFilter { get; set; }
         ICommand SearchWorkerCommand { get; }
+        ICommand ChangeWorkerInfoCommand { get; }
         string SearchString { get; set; }
     }
 
@@ -68,13 +71,45 @@ namespace Spa_salon.ViewModels
                 _selectedWorker = value;
                 if (_selectedWorker != null)
                 {
+                    NewWorker = new WorkerViewModel();
+                    NewWorker.LastName = _selectedWorker.LastName;
+                    NewWorker.FirstName = _selectedWorker.FirstName;
+                    NewWorker.MiddleName = _selectedWorker.MiddleName;
+                    NewWorker.DateOfBirth = _selectedWorker.DateOfBirth;
+                    NewWorker.PassportNumber = _selectedWorker.PassportNumber;
+                    NewWorker.WorkbookNumber = _selectedWorker.WorkbookNumber;
+                    NewWorker.MedicalbookNumber = _selectedWorker.MedicalbookNumber;
+                    NewWorker.IdNumber = _selectedWorker.IdNumber;
+                    NewWorker.PhoneNumber = _selectedWorker.PhoneNumber;
+                    NewWorker.Address = _selectedWorker.Address;
+                    NewWorker.Position = _selectedWorker.Position;
+
                     SelectedPosition = _selectedWorker.Position;
+
+                    NewSelectedPosition = new PositionViewModel();
+                    NewSelectedPosition.PositionName = _selectedPosition.PositionName;
                 }
                 else
                 {
                     SelectedPosition = null;
+                    NewSelectedPosition = null;
+                    NewWorker = null;
                 }
                 OnPropertyChanged("SelectedWorker");
+            }
+        }
+
+        private IWorkerViewModel _newWorker;
+        public IWorkerViewModel NewWorker
+        {
+            get
+            {
+                return _newWorker;
+            }
+            set
+            {
+                _newWorker = value;
+                OnPropertyChanged("NewWorker");
             }
         }
 
@@ -114,6 +149,25 @@ namespace Spa_salon.ViewModels
             {
                 _selectedPosition = value;
                 OnPropertyChanged("SelectedPosition");
+            }
+        }
+
+        private IPositionViewModel _newSelectedPosition;
+        public IPositionViewModel NewSelectedPosition
+        {
+            get
+            {
+                return _newSelectedPosition;
+            }
+
+            set
+            {
+                _newSelectedPosition = value;
+                if(NewWorker != null)
+                {
+                    NewWorker.Position = _newSelectedPosition;
+                }
+                OnPropertyChanged("NewSelectedPosition");
             }
         }
 
@@ -165,6 +219,53 @@ namespace Spa_salon.ViewModels
             }
         }
 
+        private ICommand _changeWorkerInfoCommand;
+        public ICommand ChangeWorkerInfoCommand
+        {
+            get
+            {
+                if(_changeWorkerInfoCommand == null)
+                {
+                    _changeWorkerInfoCommand = new DelegateCommand(ChangeWorkerInfoCommand_Execute, ChangeWorkerInfoCommand_CanExecute);
+                }
+
+                return _changeWorkerInfoCommand;
+            }
+        }
+
+        private bool ChangeWorkerInfoCommand_CanExecute(object o)
+        {
+            if(NewWorker == null)
+            {
+                return false;
+            }
+
+            if(string.IsNullOrEmpty(NewWorker.LastName) || string.IsNullOrEmpty(NewWorker.FirstName) || string.IsNullOrEmpty(NewWorker.MiddleName) ||
+                string.IsNullOrEmpty(NewWorker.PassportNumber.ToString()) || string.IsNullOrEmpty(NewWorker.WorkbookNumber.ToString()) ||
+                string.IsNullOrEmpty(NewWorker.MedicalbookNumber.ToString()) || string.IsNullOrEmpty(NewWorker.IdNumber.ToString()) ||
+                string.IsNullOrEmpty(NewWorker.PhoneNumber.ToString()) || string.IsNullOrEmpty(NewWorker.Address) ||
+                NewSelectedPosition == null || string.IsNullOrEmpty(NewWorker.DateOfBirth))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ChangeWorkerInfoCommand_Execute(object o)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!");
+            }
+        }
+
         private bool SearchWorkerCommand_CanExecute(object o)
         {
             return !string.IsNullOrEmpty(SearchString);
@@ -186,7 +287,7 @@ namespace Spa_salon.ViewModels
                         Workers = new ObservableCollection<IWorkerViewModel>(AllWorkers.Where(w => w.MiddleName == SearchString).ToList());
                         break;
                     case WorkerFilters.DateOfBirth:
-                        Workers = new ObservableCollection<IWorkerViewModel>(AllWorkers.Where(w => w.DateOfBirth.ToString("dd.MM.yyyy") == SearchString).ToList());
+                        Workers = new ObservableCollection<IWorkerViewModel>(AllWorkers.Where(w => w.DateOfBirth == SearchString).ToList());
                         break;
                     case WorkerFilters.PassportNumber:
                         Workers = new ObservableCollection<IWorkerViewModel>(AllWorkers.Where(w => w.PassportNumber == SearchString).ToList());

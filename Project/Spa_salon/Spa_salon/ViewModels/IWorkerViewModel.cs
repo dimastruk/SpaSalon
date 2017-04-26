@@ -16,7 +16,7 @@ namespace Spa_salon.ViewModels
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
-        DateTime DateOfBirth { get; set; }
+        string DateOfBirth { get; set; }
         string PassportNumber { get; set; }
         int WorkbookNumber { get; set; }
         int MedicalbookNumber { get; set; }
@@ -31,13 +31,18 @@ namespace Spa_salon.ViewModels
 
     public class WorkerViewModel : ViewModelBase, IWorkerViewModel
     {
+        public WorkerViewModel()
+        {
+
+        }
+
         public WorkerViewModel(IWorker worker)
         {
             WorkerId = worker.WorkerId;
             LastName = worker.LastName;
             FirstName = worker.FirstName;
             MiddleName = worker.MiddleName;
-            DateOfBirth = worker.DateOfBirth;
+            DateOfBirth = worker.DateOfBirth.ToString("dd.MM.yyyy");
             PassportNumber = worker.PassportNumber;
             WorkbookNumber = worker.WorkbookNumber;
             MedicalbookNumber = worker.MedicalbookNumber;
@@ -64,8 +69,8 @@ namespace Spa_salon.ViewModels
             }
         }
 
-        private DateTime _dateOfBirth;
-        public DateTime DateOfBirth
+        private string _dateOfBirth;
+        public string DateOfBirth
         {
             get
             {

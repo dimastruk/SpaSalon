@@ -16,6 +16,11 @@ namespace Spa_salon.ViewModels
 
     public class PositionViewModel : ViewModelBase, IPositionViewModel
     {
+        public PositionViewModel()
+        {
+
+        }
+
         public PositionViewModel(IPosition position)
         {
             PositionId = position.PositionId;
