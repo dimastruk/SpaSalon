@@ -29,7 +29,11 @@
                         </WrapPanel>
                         <WrapPanel>
                             <Border Height="230" Padding="5,15,0,10" Width="450" HorizontalAlignment="Left">
-                                <DataGrid></DataGrid>
+                                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Positions.Positions}" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding PositionName}" ElementStyle="{StaticResource CellCenterAlign}" Width="1*" Header="Посада" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
                             </Border>
                             <Border Height="230" Padding="5,6,0,8" Width="225" HorizontalAlignment="Left">
                                 <GroupBox Margin="10,0,0,0" Header="Редагування">

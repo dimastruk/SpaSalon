@@ -36,6 +36,7 @@ namespace Spa_salon.ViewModels
         IClientsViewModel Client { get; }
         IServicesViewModel Services { get; }
         ISalonsViewModel Salons { get; }
+        IPositionsViewModel Positions { get; }
         #endregion Properties
 
         #region Collections
@@ -71,6 +72,7 @@ namespace Spa_salon.ViewModels
             Client = new ClientsViewModel();
             Services = new ServicesViewModel();
             Salons = new SalonsViewModel();
+            Positions = new PositionsViewModel();
         }
         #endregion
 
@@ -280,6 +282,11 @@ namespace Spa_salon.ViewModels
         }
 
         public ISalonsViewModel Salons
+        {
+            get;
+        }
+
+        public IPositionsViewModel Positions
         {
             get;
         }
