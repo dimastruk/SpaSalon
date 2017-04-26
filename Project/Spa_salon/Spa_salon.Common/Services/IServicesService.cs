@@ -12,6 +12,7 @@ namespace Spa_salon.Common.Services
     public interface IServicesService
     {
         IService GetService(Services service);
+        ICollection<IService> GetServices();
     }
 
     public class ServicesService : DbDependentService, IServicesService
@@ -24,6 +25,20 @@ namespace Spa_salon.Common.Services
             }
 
             return new Service(service.service_id, service.service_name, service.service_price);
+        }
+
+        public ICollection<IService> GetServices()
+        {
+            var list = new List<IService>();
+
+            var dbServices = DbService.Context.Services;
+
+            foreach(var service in dbServices)
+            {
+                list.Add(GetService(service));
+            }
+
+            return list;
         }
     }
 }

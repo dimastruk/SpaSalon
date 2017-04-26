@@ -111,6 +111,8 @@
     <Compile Include="ViewModels\IPositionViewModel.cs" />
     <Compile Include="ViewModels\ISchedulesViewModel.cs" />
     <Compile Include="ViewModels\IScheduleViewModel.cs" />
+    <Compile Include="ViewModels\IServicesViewModel.cs" />
+    <Compile Include="ViewModels\IServiceViewModel.cs" />
     <Compile Include="ViewModels\IUserViewModel.cs" />
     <Compile Include="ViewModels\IWorkersViewModel.cs" />
     <Compile Include="ViewModels\IWorkerViewModel.cs" />

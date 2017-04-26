@@ -51,7 +51,7 @@
                 </GroupBox>
             </Border>
             <Border VerticalAlignment="Top" Height="545" Padding="10">
-                <DataGrid HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding User.Order.WorkerOrders}" IsReadOnly="True">
+                <DataGrid SelectionMode="Single" HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding User.Order.WorkerOrders}" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Client.LastName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Прізвище" />
                         <DataGridTextColumn Binding="{Binding Client.FirstName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ім'я" />

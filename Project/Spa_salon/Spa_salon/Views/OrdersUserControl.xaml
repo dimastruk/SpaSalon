@@ -7,6 +7,17 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <Style x:Key="CellCenterAlign">
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <StackPanel>
             <Border Padding="10">
@@ -20,7 +31,12 @@
                             </WrapPanel>
                             <WrapPanel>
                                 <Border Height="230" Padding="5,15,0,10" Width="430" HorizontalAlignment="Left">
-                                    <DataGrid></DataGrid>
+                                    <DataGrid SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding User.Services.Services}" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding ServiceName}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Послуга" />
+                                            <DataGridTextColumn Binding="{Binding ServicePrice}" ElementStyle="{StaticResource CellCenterAlign}" Width="0.5*" Header="Ціна" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
                                 </Border>
                                 <GroupBox Margin="25,7,0,8" Header="Інформація про клієнта" Width="220">
                                     <Border Padding="10,5,10,10">
